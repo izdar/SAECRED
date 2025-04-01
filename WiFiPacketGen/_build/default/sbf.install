@@ -1,0 +1,11 @@
+lib: [
+  "_build/install/default/lib/sbf/META"
+  "_build/install/default/lib/sbf/dune-package"
+  "_build/install/default/lib/sbf/opam"
+]
+bin: [
+  "_build/install/default/bin/sbf"
+]
+doc: [
+  "_build/install/default/doc/sbf/README.md"
+]

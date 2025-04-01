@@ -1,0 +1,4 @@
+(lang dune 3.16)
+(name sbf)
+(sections (lib .) (bin ../../bin) (doc ../../doc/sbf))
+(files (lib (META dune-package opam)) (bin (sbf)) (doc (README.md)))
