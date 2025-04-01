@@ -1,5 +1,6 @@
 SUT="hostapd"
 BYTES_PARSED = '../WiFiPacketGen/sync/driver_oracle.json'
+AP_PATH = '../hostap-wpa3/hostapd/'
 FUZZING = True
 HOSTAP_TEST = True
 
@@ -69,13 +70,8 @@ if SUT == 'hostapd':
 
 dummy_src = "9c:00:ff:ff:ff:00"
 dummy_list = [dummy_src[:-1] + str(i) for i in range(10)]
-src_iterator = 1
-src_list_init = [int_to_mac(mac_to_int(src) + i) for i in range(10000000)]
-src_list = list(filter(lambda x: x != dst and x not in dummy_list, src_list_init))
 import json
 src_list = json.load(open("precomputed-macs.json", "r"))
-del src_list_init
-
 AC_TRIGGER_COUNT = 10
 
 TRANSMISSIONS = 2

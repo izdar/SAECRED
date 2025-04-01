@@ -1,0 +1,1 @@
+genhtml lcov-build.info --output-directory lcov-build-html

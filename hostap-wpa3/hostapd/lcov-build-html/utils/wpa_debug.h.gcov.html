@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-build.info - utils/wpa_debug.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">utils</a> - wpa_debug.h<span style="font-size: 80%;"> (source / <a href="wpa_debug.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-build.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">66.7&nbsp;%</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">8</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-21 16:38:54</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryMed">75.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">3</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /*</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * wpa_supplicant/hostapd / Debug prints</span>
+<span id="L3"><span class="lineNum">       3</span>              :  * Copyright (c) 2002-2013, Jouni Malinen &lt;j@w1.fi&gt;</span>
+<span id="L4"><span class="lineNum">       4</span>              :  *</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * This software may be distributed under the terms of the BSD license.</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * See README for more details.</span>
+<span id="L7"><span class="lineNum">       7</span>              :  */</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : #ifndef WPA_DEBUG_H</span>
+<span id="L10"><span class="lineNum">      10</span>              : #define WPA_DEBUG_H</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : #include &quot;wpabuf.h&quot;</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : extern int wpa_debug_level;</span>
+<span id="L15"><span class="lineNum">      15</span>              : extern int wpa_debug_show_keys;</span>
+<span id="L16"><span class="lineNum">      16</span>              : extern int wpa_debug_timestamp;</span>
+<span id="L17"><span class="lineNum">      17</span>              : extern int wpa_debug_syslog;</span>
+<span id="L18"><span class="lineNum">      18</span>              : </span>
+<span id="L19"><span class="lineNum">      19</span>              : /* Debugging function - conditional printf and hex dump. Driver wrappers can</span>
+<span id="L20"><span class="lineNum">      20</span>              :  * use these for debugging purposes. */</span>
+<span id="L21"><span class="lineNum">      21</span>              : </span>
+<span id="L22"><span class="lineNum">      22</span>              : enum {</span>
+<span id="L23"><span class="lineNum">      23</span>              :         MSG_EXCESSIVE, MSG_MSGDUMP, MSG_DEBUG, MSG_INFO, MSG_WARNING, MSG_ERROR</span>
+<span id="L24"><span class="lineNum">      24</span>              : };</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              : #ifdef CONFIG_NO_STDOUT_DEBUG</span>
+<span id="L27"><span class="lineNum">      27</span>              : </span>
+<span id="L28"><span class="lineNum">      28</span>              : #define wpa_debug_print_timestamp() do { } while (0)</span>
+<span id="L29"><span class="lineNum">      29</span>              : #define wpa_printf(args...) do { } while (0)</span>
+<span id="L30"><span class="lineNum">      30</span>              : #define wpa_hexdump(l,t,b,le) do { } while (0)</span>
+<span id="L31"><span class="lineNum">      31</span>              : #define wpa_hexdump_buf(l,t,b) do { } while (0)</span>
+<span id="L32"><span class="lineNum">      32</span>              : #define wpa_hexdump_key(l,t,b,le) do { } while (0)</span>
+<span id="L33"><span class="lineNum">      33</span>              : #define wpa_hexdump_buf_key(l,t,b) do { } while (0)</span>
+<span id="L34"><span class="lineNum">      34</span>              : #define wpa_hexdump_ascii(l,t,b,le) do { } while (0)</span>
+<span id="L35"><span class="lineNum">      35</span>              : #define wpa_hexdump_ascii_key(l,t,b,le) do { } while (0)</span>
+<span id="L36"><span class="lineNum">      36</span>              : #define wpa_debug_open_file(p) do { } while (0)</span>
+<span id="L37"><span class="lineNum">      37</span>              : #define wpa_debug_close_file() do { } while (0)</span>
+<span id="L38"><span class="lineNum">      38</span>              : #define wpa_debug_setup_stdout() do { } while (0)</span>
+<span id="L39"><span class="lineNum">      39</span>              : #define wpa_dbg(args...) do { } while (0)</span>
+<span id="L40"><span class="lineNum">      40</span>              : </span>
+<span id="L41"><span class="lineNum">      41</span>              : static inline int wpa_debug_reopen_file(void)</span>
+<span id="L42"><span class="lineNum">      42</span>              : {</span>
+<span id="L43"><span class="lineNum">      43</span>              :         return 0;</span>
+<span id="L44"><span class="lineNum">      44</span>              : }</span>
+<span id="L45"><span class="lineNum">      45</span>              : </span>
+<span id="L46"><span class="lineNum">      46</span>              : #else /* CONFIG_NO_STDOUT_DEBUG */</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              : int wpa_debug_open_file(const char *path);</span>
+<span id="L49"><span class="lineNum">      49</span>              : int wpa_debug_reopen_file(void);</span>
+<span id="L50"><span class="lineNum">      50</span>              : void wpa_debug_close_file(void);</span>
+<span id="L51"><span class="lineNum">      51</span>              : void wpa_debug_setup_stdout(void);</span>
+<span id="L52"><span class="lineNum">      52</span>              : </span>
+<span id="L53"><span class="lineNum">      53</span>              : /**</span>
+<span id="L54"><span class="lineNum">      54</span>              :  * wpa_debug_printf_timestamp - Print timestamp for debug output</span>
+<span id="L55"><span class="lineNum">      55</span>              :  *</span>
+<span id="L56"><span class="lineNum">      56</span>              :  * This function prints a timestamp in seconds_from_1970.microsoconds</span>
+<span id="L57"><span class="lineNum">      57</span>              :  * format if debug output has been configured to include timestamps in debug</span>
+<span id="L58"><span class="lineNum">      58</span>              :  * messages.</span>
+<span id="L59"><span class="lineNum">      59</span>              :  */</span>
+<span id="L60"><span class="lineNum">      60</span>              : void wpa_debug_print_timestamp(void);</span>
+<span id="L61"><span class="lineNum">      61</span>              : </span>
+<span id="L62"><span class="lineNum">      62</span>              : /**</span>
+<span id="L63"><span class="lineNum">      63</span>              :  * wpa_printf - conditional printf</span>
+<span id="L64"><span class="lineNum">      64</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L65"><span class="lineNum">      65</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L66"><span class="lineNum">      66</span>              :  *</span>
+<span id="L67"><span class="lineNum">      67</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L68"><span class="lineNum">      68</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L69"><span class="lineNum">      69</span>              :  * configuration.</span>
+<span id="L70"><span class="lineNum">      70</span>              :  *</span>
+<span id="L71"><span class="lineNum">      71</span>              :  * Note: New line '\n' is added to the end of the text when printing to stdout.</span>
+<span id="L72"><span class="lineNum">      72</span>              :  */</span>
+<span id="L73"><span class="lineNum">      73</span>              : void wpa_printf(int level, const char *fmt, ...)</span>
+<span id="L74"><span class="lineNum">      74</span>              : PRINTF_FORMAT(2, 3);</span>
+<span id="L75"><span class="lineNum">      75</span>              : </span>
+<span id="L76"><span class="lineNum">      76</span>              : /**</span>
+<span id="L77"><span class="lineNum">      77</span>              :  * wpa_hexdump - conditional hex dump</span>
+<span id="L78"><span class="lineNum">      78</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L79"><span class="lineNum">      79</span>              :  * @title: title of for the message</span>
+<span id="L80"><span class="lineNum">      80</span>              :  * @buf: data buffer to be dumped</span>
+<span id="L81"><span class="lineNum">      81</span>              :  * @len: length of the buf</span>
+<span id="L82"><span class="lineNum">      82</span>              :  *</span>
+<span id="L83"><span class="lineNum">      83</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L84"><span class="lineNum">      84</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L85"><span class="lineNum">      85</span>              :  * configuration. The contents of buf is printed out has hex dump.</span>
+<span id="L86"><span class="lineNum">      86</span>              :  */</span>
+<span id="L87"><span class="lineNum">      87</span>              : void wpa_hexdump(int level, const char *title, const void *buf, size_t len);</span>
+<span id="L88"><span class="lineNum">      88</span>              : </span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC tlaBgGNC">         117 : static inline void wpa_hexdump_buf(int level, const char *title,</span></span>
+<span id="L90"><span class="lineNum">      90</span>              :                                    const struct wpabuf *buf)</span>
+<span id="L91"><span class="lineNum">      91</span>              : {</span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         234 :         wpa_hexdump(level, title, buf ? wpabuf_head(buf) : NULL,</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         117 :                     buf ? wpabuf_len(buf) : 0);</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         117 : }</span></span>
+<span id="L95"><span class="lineNum">      95</span>              : </span>
+<span id="L96"><span class="lineNum">      96</span>              : /**</span>
+<span id="L97"><span class="lineNum">      97</span>              :  * wpa_hexdump_key - conditional hex dump, hide keys</span>
+<span id="L98"><span class="lineNum">      98</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L99"><span class="lineNum">      99</span>              :  * @title: title of for the message</span>
+<span id="L100"><span class="lineNum">     100</span>              :  * @buf: data buffer to be dumped</span>
+<span id="L101"><span class="lineNum">     101</span>              :  * @len: length of the buf</span>
+<span id="L102"><span class="lineNum">     102</span>              :  *</span>
+<span id="L103"><span class="lineNum">     103</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L104"><span class="lineNum">     104</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L105"><span class="lineNum">     105</span>              :  * configuration. The contents of buf is printed out has hex dump. This works</span>
+<span id="L106"><span class="lineNum">     106</span>              :  * like wpa_hexdump(), but by default, does not include secret keys (passwords,</span>
+<span id="L107"><span class="lineNum">     107</span>              :  * etc.) in debug output.</span>
+<span id="L108"><span class="lineNum">     108</span>              :  */</span>
+<span id="L109"><span class="lineNum">     109</span>              : void wpa_hexdump_key(int level, const char *title, const void *buf, size_t len);</span>
+<span id="L110"><span class="lineNum">     110</span>              : </span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaUNC tlaBgUNC">           0 : static inline void wpa_hexdump_buf_key(int level, const char *title,</span></span>
+<span id="L112"><span class="lineNum">     112</span>              :                                        const struct wpabuf *buf)</span>
+<span id="L113"><span class="lineNum">     113</span>              : {</span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaUNC">           0 :         wpa_hexdump_key(level, title, buf ? wpabuf_head(buf) : NULL,</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC">           0 :                         buf ? wpabuf_len(buf) : 0);</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 : }</span></span>
+<span id="L117"><span class="lineNum">     117</span>              : </span>
+<span id="L118"><span class="lineNum">     118</span>              : /**</span>
+<span id="L119"><span class="lineNum">     119</span>              :  * wpa_hexdump_ascii - conditional hex dump</span>
+<span id="L120"><span class="lineNum">     120</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L121"><span class="lineNum">     121</span>              :  * @title: title of for the message</span>
+<span id="L122"><span class="lineNum">     122</span>              :  * @buf: data buffer to be dumped</span>
+<span id="L123"><span class="lineNum">     123</span>              :  * @len: length of the buf</span>
+<span id="L124"><span class="lineNum">     124</span>              :  *</span>
+<span id="L125"><span class="lineNum">     125</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L126"><span class="lineNum">     126</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L127"><span class="lineNum">     127</span>              :  * configuration. The contents of buf is printed out has hex dump with both</span>
+<span id="L128"><span class="lineNum">     128</span>              :  * the hex numbers and ASCII characters (for printable range) are shown. 16</span>
+<span id="L129"><span class="lineNum">     129</span>              :  * bytes per line will be shown.</span>
+<span id="L130"><span class="lineNum">     130</span>              :  */</span>
+<span id="L131"><span class="lineNum">     131</span>              : void wpa_hexdump_ascii(int level, const char *title, const void *buf,</span>
+<span id="L132"><span class="lineNum">     132</span>              :                        size_t len);</span>
+<span id="L133"><span class="lineNum">     133</span>              : </span>
+<span id="L134"><span class="lineNum">     134</span>              : /**</span>
+<span id="L135"><span class="lineNum">     135</span>              :  * wpa_hexdump_ascii_key - conditional hex dump, hide keys</span>
+<span id="L136"><span class="lineNum">     136</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L137"><span class="lineNum">     137</span>              :  * @title: title of for the message</span>
+<span id="L138"><span class="lineNum">     138</span>              :  * @buf: data buffer to be dumped</span>
+<span id="L139"><span class="lineNum">     139</span>              :  * @len: length of the buf</span>
+<span id="L140"><span class="lineNum">     140</span>              :  *</span>
+<span id="L141"><span class="lineNum">     141</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L142"><span class="lineNum">     142</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L143"><span class="lineNum">     143</span>              :  * configuration. The contents of buf is printed out has hex dump with both</span>
+<span id="L144"><span class="lineNum">     144</span>              :  * the hex numbers and ASCII characters (for printable range) are shown. 16</span>
+<span id="L145"><span class="lineNum">     145</span>              :  * bytes per line will be shown. This works like wpa_hexdump_ascii(), but by</span>
+<span id="L146"><span class="lineNum">     146</span>              :  * default, does not include secret keys (passwords, etc.) in debug output.</span>
+<span id="L147"><span class="lineNum">     147</span>              :  */</span>
+<span id="L148"><span class="lineNum">     148</span>              : void wpa_hexdump_ascii_key(int level, const char *title, const void *buf,</span>
+<span id="L149"><span class="lineNum">     149</span>              :                            size_t len);</span>
+<span id="L150"><span class="lineNum">     150</span>              : </span>
+<span id="L151"><span class="lineNum">     151</span>              : /*</span>
+<span id="L152"><span class="lineNum">     152</span>              :  * wpa_dbg() behaves like wpa_msg(), but it can be removed from build to reduce</span>
+<span id="L153"><span class="lineNum">     153</span>              :  * binary size. As such, it should be used with debugging messages that are not</span>
+<span id="L154"><span class="lineNum">     154</span>              :  * needed in the control interface while wpa_msg() has to be used for anything</span>
+<span id="L155"><span class="lineNum">     155</span>              :  * that needs to shown to control interface monitors.</span>
+<span id="L156"><span class="lineNum">     156</span>              :  */</span>
+<span id="L157"><span class="lineNum">     157</span>              : #define wpa_dbg(args...) wpa_msg(args)</span>
+<span id="L158"><span class="lineNum">     158</span>              : </span>
+<span id="L159"><span class="lineNum">     159</span>              : #endif /* CONFIG_NO_STDOUT_DEBUG */</span>
+<span id="L160"><span class="lineNum">     160</span>              : </span>
+<span id="L161"><span class="lineNum">     161</span>              : </span>
+<span id="L162"><span class="lineNum">     162</span>              : #ifdef CONFIG_NO_WPA_MSG</span>
+<span id="L163"><span class="lineNum">     163</span>              : #define wpa_msg(args...) do { } while (0)</span>
+<span id="L164"><span class="lineNum">     164</span>              : #define wpa_msg_ctrl(args...) do { } while (0)</span>
+<span id="L165"><span class="lineNum">     165</span>              : #define wpa_msg_global(args...) do { } while (0)</span>
+<span id="L166"><span class="lineNum">     166</span>              : #define wpa_msg_global_ctrl(args...) do { } while (0)</span>
+<span id="L167"><span class="lineNum">     167</span>              : #define wpa_msg_no_global(args...) do { } while (0)</span>
+<span id="L168"><span class="lineNum">     168</span>              : #define wpa_msg_global_only(args...) do { } while (0)</span>
+<span id="L169"><span class="lineNum">     169</span>              : #define wpa_msg_register_cb(f) do { } while (0)</span>
+<span id="L170"><span class="lineNum">     170</span>              : #define wpa_msg_register_ifname_cb(f) do { } while (0)</span>
+<span id="L171"><span class="lineNum">     171</span>              : #else /* CONFIG_NO_WPA_MSG */</span>
+<span id="L172"><span class="lineNum">     172</span>              : /**</span>
+<span id="L173"><span class="lineNum">     173</span>              :  * wpa_msg - Conditional printf for default target and ctrl_iface monitors</span>
+<span id="L174"><span class="lineNum">     174</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L175"><span class="lineNum">     175</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L176"><span class="lineNum">     176</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L177"><span class="lineNum">     177</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L178"><span class="lineNum">     178</span>              :  *</span>
+<span id="L179"><span class="lineNum">     179</span>              :  * This function is used to print conditional debugging and error messages. The</span>
+<span id="L180"><span class="lineNum">     180</span>              :  * output may be directed to stdout, stderr, and/or syslog based on</span>
+<span id="L181"><span class="lineNum">     181</span>              :  * configuration. This function is like wpa_printf(), but it also sends the</span>
+<span id="L182"><span class="lineNum">     182</span>              :  * same message to all attached ctrl_iface monitors.</span>
+<span id="L183"><span class="lineNum">     183</span>              :  *</span>
+<span id="L184"><span class="lineNum">     184</span>              :  * Note: New line '\n' is added to the end of the text when printing to stdout.</span>
+<span id="L185"><span class="lineNum">     185</span>              :  */</span>
+<span id="L186"><span class="lineNum">     186</span>              : void wpa_msg(void *ctx, int level, const char *fmt, ...) PRINTF_FORMAT(3, 4);</span>
+<span id="L187"><span class="lineNum">     187</span>              : </span>
+<span id="L188"><span class="lineNum">     188</span>              : /**</span>
+<span id="L189"><span class="lineNum">     189</span>              :  * wpa_msg_ctrl - Conditional printf for ctrl_iface monitors</span>
+<span id="L190"><span class="lineNum">     190</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L191"><span class="lineNum">     191</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L192"><span class="lineNum">     192</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L193"><span class="lineNum">     193</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L194"><span class="lineNum">     194</span>              :  *</span>
+<span id="L195"><span class="lineNum">     195</span>              :  * This function is used to print conditional debugging and error messages.</span>
+<span id="L196"><span class="lineNum">     196</span>              :  * This function is like wpa_msg(), but it sends the output only to the</span>
+<span id="L197"><span class="lineNum">     197</span>              :  * attached ctrl_iface monitors. In other words, it can be used for frequent</span>
+<span id="L198"><span class="lineNum">     198</span>              :  * events that do not need to be sent to syslog.</span>
+<span id="L199"><span class="lineNum">     199</span>              :  */</span>
+<span id="L200"><span class="lineNum">     200</span>              : void wpa_msg_ctrl(void *ctx, int level, const char *fmt, ...)</span>
+<span id="L201"><span class="lineNum">     201</span>              : PRINTF_FORMAT(3, 4);</span>
+<span id="L202"><span class="lineNum">     202</span>              : </span>
+<span id="L203"><span class="lineNum">     203</span>              : /**</span>
+<span id="L204"><span class="lineNum">     204</span>              :  * wpa_msg_global - Global printf for ctrl_iface monitors</span>
+<span id="L205"><span class="lineNum">     205</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L206"><span class="lineNum">     206</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L207"><span class="lineNum">     207</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L208"><span class="lineNum">     208</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L209"><span class="lineNum">     209</span>              :  *</span>
+<span id="L210"><span class="lineNum">     210</span>              :  * This function is used to print conditional debugging and error messages.</span>
+<span id="L211"><span class="lineNum">     211</span>              :  * This function is like wpa_msg(), but it sends the output as a global event,</span>
+<span id="L212"><span class="lineNum">     212</span>              :  * i.e., without being specific to an interface. For backwards compatibility,</span>
+<span id="L213"><span class="lineNum">     213</span>              :  * an old style event is also delivered on one of the interfaces (the one</span>
+<span id="L214"><span class="lineNum">     214</span>              :  * specified by the context data).</span>
+<span id="L215"><span class="lineNum">     215</span>              :  */</span>
+<span id="L216"><span class="lineNum">     216</span>              : void wpa_msg_global(void *ctx, int level, const char *fmt, ...)</span>
+<span id="L217"><span class="lineNum">     217</span>              : PRINTF_FORMAT(3, 4);</span>
+<span id="L218"><span class="lineNum">     218</span>              : </span>
+<span id="L219"><span class="lineNum">     219</span>              : /**</span>
+<span id="L220"><span class="lineNum">     220</span>              :  * wpa_msg_global_ctrl - Conditional global printf for ctrl_iface monitors</span>
+<span id="L221"><span class="lineNum">     221</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L222"><span class="lineNum">     222</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L223"><span class="lineNum">     223</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L224"><span class="lineNum">     224</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L225"><span class="lineNum">     225</span>              :  *</span>
+<span id="L226"><span class="lineNum">     226</span>              :  * This function is used to print conditional debugging and error messages.</span>
+<span id="L227"><span class="lineNum">     227</span>              :  * This function is like wpa_msg_global(), but it sends the output only to the</span>
+<span id="L228"><span class="lineNum">     228</span>              :  * attached global ctrl_iface monitors. In other words, it can be used for</span>
+<span id="L229"><span class="lineNum">     229</span>              :  * frequent events that do not need to be sent to syslog.</span>
+<span id="L230"><span class="lineNum">     230</span>              :  */</span>
+<span id="L231"><span class="lineNum">     231</span>              : void wpa_msg_global_ctrl(void *ctx, int level, const char *fmt, ...)</span>
+<span id="L232"><span class="lineNum">     232</span>              : PRINTF_FORMAT(3, 4);</span>
+<span id="L233"><span class="lineNum">     233</span>              : </span>
+<span id="L234"><span class="lineNum">     234</span>              : /**</span>
+<span id="L235"><span class="lineNum">     235</span>              :  * wpa_msg_no_global - Conditional printf for ctrl_iface monitors</span>
+<span id="L236"><span class="lineNum">     236</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L237"><span class="lineNum">     237</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L238"><span class="lineNum">     238</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L239"><span class="lineNum">     239</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L240"><span class="lineNum">     240</span>              :  *</span>
+<span id="L241"><span class="lineNum">     241</span>              :  * This function is used to print conditional debugging and error messages.</span>
+<span id="L242"><span class="lineNum">     242</span>              :  * This function is like wpa_msg(), but it does not send the output as a global</span>
+<span id="L243"><span class="lineNum">     243</span>              :  * event.</span>
+<span id="L244"><span class="lineNum">     244</span>              :  */</span>
+<span id="L245"><span class="lineNum">     245</span>              : void wpa_msg_no_global(void *ctx, int level, const char *fmt, ...)</span>
+<span id="L246"><span class="lineNum">     246</span>              : PRINTF_FORMAT(3, 4);</span>
+<span id="L247"><span class="lineNum">     247</span>              : </span>
+<span id="L248"><span class="lineNum">     248</span>              : /**</span>
+<span id="L249"><span class="lineNum">     249</span>              :  * wpa_msg_global_only - Conditional printf for ctrl_iface monitors</span>
+<span id="L250"><span class="lineNum">     250</span>              :  * @ctx: Pointer to context data; this is the ctx variable registered</span>
+<span id="L251"><span class="lineNum">     251</span>              :  *      with struct wpa_driver_ops::init()</span>
+<span id="L252"><span class="lineNum">     252</span>              :  * @level: priority level (MSG_*) of the message</span>
+<span id="L253"><span class="lineNum">     253</span>              :  * @fmt: printf format string, followed by optional arguments</span>
+<span id="L254"><span class="lineNum">     254</span>              :  *</span>
+<span id="L255"><span class="lineNum">     255</span>              :  * This function is used to print conditional debugging and error messages.</span>
+<span id="L256"><span class="lineNum">     256</span>              :  * This function is like wpa_msg_global(), but it sends the output only as a</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * global event.</span>
+<span id="L258"><span class="lineNum">     258</span>              :  */</span>
+<span id="L259"><span class="lineNum">     259</span>              : void wpa_msg_global_only(void *ctx, int level, const char *fmt, ...)</span>
+<span id="L260"><span class="lineNum">     260</span>              : PRINTF_FORMAT(3, 4);</span>
+<span id="L261"><span class="lineNum">     261</span>              : </span>
+<span id="L262"><span class="lineNum">     262</span>              : enum wpa_msg_type {</span>
+<span id="L263"><span class="lineNum">     263</span>              :         WPA_MSG_PER_INTERFACE,</span>
+<span id="L264"><span class="lineNum">     264</span>              :         WPA_MSG_GLOBAL,</span>
+<span id="L265"><span class="lineNum">     265</span>              :         WPA_MSG_NO_GLOBAL,</span>
+<span id="L266"><span class="lineNum">     266</span>              :         WPA_MSG_ONLY_GLOBAL,</span>
+<span id="L267"><span class="lineNum">     267</span>              : };</span>
+<span id="L268"><span class="lineNum">     268</span>              : </span>
+<span id="L269"><span class="lineNum">     269</span>              : typedef void (*wpa_msg_cb_func)(void *ctx, int level, enum wpa_msg_type type,</span>
+<span id="L270"><span class="lineNum">     270</span>              :                                 const char *txt, size_t len);</span>
+<span id="L271"><span class="lineNum">     271</span>              : </span>
+<span id="L272"><span class="lineNum">     272</span>              : /**</span>
+<span id="L273"><span class="lineNum">     273</span>              :  * wpa_msg_register_cb - Register callback function for wpa_msg() messages</span>
+<span id="L274"><span class="lineNum">     274</span>              :  * @func: Callback function (%NULL to unregister)</span>
+<span id="L275"><span class="lineNum">     275</span>              :  */</span>
+<span id="L276"><span class="lineNum">     276</span>              : void wpa_msg_register_cb(wpa_msg_cb_func func);</span>
+<span id="L277"><span class="lineNum">     277</span>              : </span>
+<span id="L278"><span class="lineNum">     278</span>              : typedef const char * (*wpa_msg_get_ifname_func)(void *ctx);</span>
+<span id="L279"><span class="lineNum">     279</span>              : void wpa_msg_register_ifname_cb(wpa_msg_get_ifname_func func);</span>
+<span id="L280"><span class="lineNum">     280</span>              : </span>
+<span id="L281"><span class="lineNum">     281</span>              : #endif /* CONFIG_NO_WPA_MSG */</span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span>              : #ifdef CONFIG_NO_HOSTAPD_LOGGER</span>
+<span id="L284"><span class="lineNum">     284</span>              : #define hostapd_logger(args...) do { } while (0)</span>
+<span id="L285"><span class="lineNum">     285</span>              : #define hostapd_logger_register_cb(f) do { } while (0)</span>
+<span id="L286"><span class="lineNum">     286</span>              : #else /* CONFIG_NO_HOSTAPD_LOGGER */</span>
+<span id="L287"><span class="lineNum">     287</span>              : void hostapd_logger(void *ctx, const u8 *addr, unsigned int module, int level,</span>
+<span id="L288"><span class="lineNum">     288</span>              :                     const char *fmt, ...) PRINTF_FORMAT(5, 6);</span>
+<span id="L289"><span class="lineNum">     289</span>              : </span>
+<span id="L290"><span class="lineNum">     290</span>              : typedef void (*hostapd_logger_cb_func)(void *ctx, const u8 *addr,</span>
+<span id="L291"><span class="lineNum">     291</span>              :                                        unsigned int module, int level,</span>
+<span id="L292"><span class="lineNum">     292</span>              :                                        const char *txt, size_t len);</span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span>              : /**</span>
+<span id="L295"><span class="lineNum">     295</span>              :  * hostapd_logger_register_cb - Register callback function for hostapd_logger()</span>
+<span id="L296"><span class="lineNum">     296</span>              :  * @func: Callback function (%NULL to unregister)</span>
+<span id="L297"><span class="lineNum">     297</span>              :  */</span>
+<span id="L298"><span class="lineNum">     298</span>              : void hostapd_logger_register_cb(hostapd_logger_cb_func func);</span>
+<span id="L299"><span class="lineNum">     299</span>              : #endif /* CONFIG_NO_HOSTAPD_LOGGER */</span>
+<span id="L300"><span class="lineNum">     300</span>              : </span>
+<span id="L301"><span class="lineNum">     301</span>              : #define HOSTAPD_MODULE_IEEE80211        0x00000001</span>
+<span id="L302"><span class="lineNum">     302</span>              : #define HOSTAPD_MODULE_IEEE8021X        0x00000002</span>
+<span id="L303"><span class="lineNum">     303</span>              : #define HOSTAPD_MODULE_RADIUS           0x00000004</span>
+<span id="L304"><span class="lineNum">     304</span>              : #define HOSTAPD_MODULE_WPA              0x00000008</span>
+<span id="L305"><span class="lineNum">     305</span>              : #define HOSTAPD_MODULE_DRIVER           0x00000010</span>
+<span id="L306"><span class="lineNum">     306</span>              : #define HOSTAPD_MODULE_MLME             0x00000040</span>
+<span id="L307"><span class="lineNum">     307</span>              : </span>
+<span id="L308"><span class="lineNum">     308</span>              : enum hostapd_logger_level {</span>
+<span id="L309"><span class="lineNum">     309</span>              :         HOSTAPD_LEVEL_DEBUG_VERBOSE = 0,</span>
+<span id="L310"><span class="lineNum">     310</span>              :         HOSTAPD_LEVEL_DEBUG = 1,</span>
+<span id="L311"><span class="lineNum">     311</span>              :         HOSTAPD_LEVEL_INFO = 2,</span>
+<span id="L312"><span class="lineNum">     312</span>              :         HOSTAPD_LEVEL_NOTICE = 3,</span>
+<span id="L313"><span class="lineNum">     313</span>              :         HOSTAPD_LEVEL_WARNING = 4</span>
+<span id="L314"><span class="lineNum">     314</span>              : };</span>
+<span id="L315"><span class="lineNum">     315</span>              : </span>
+<span id="L316"><span class="lineNum">     316</span>              : </span>
+<span id="L317"><span class="lineNum">     317</span>              : #ifdef CONFIG_DEBUG_SYSLOG</span>
+<span id="L318"><span class="lineNum">     318</span>              : </span>
+<span id="L319"><span class="lineNum">     319</span>              : void wpa_debug_open_syslog(void);</span>
+<span id="L320"><span class="lineNum">     320</span>              : void wpa_debug_close_syslog(void);</span>
+<span id="L321"><span class="lineNum">     321</span>              : </span>
+<span id="L322"><span class="lineNum">     322</span>              : #else /* CONFIG_DEBUG_SYSLOG */</span>
+<span id="L323"><span class="lineNum">     323</span>              : </span>
+<span id="L324"><span class="lineNum">     324</span>              : static inline void wpa_debug_open_syslog(void)</span>
+<span id="L325"><span class="lineNum">     325</span>              : {</span>
+<span id="L326"><span class="lineNum">     326</span>              : }</span>
+<span id="L327"><span class="lineNum">     327</span>              : </span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC tlaBgGNC">           5 : static inline void wpa_debug_close_syslog(void)</span></span>
+<span id="L329"><span class="lineNum">     329</span>              : {</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">           5 : }</span></span>
+<span id="L331"><span class="lineNum">     331</span>              : </span>
+<span id="L332"><span class="lineNum">     332</span>              : #endif /* CONFIG_DEBUG_SYSLOG */</span>
+<span id="L333"><span class="lineNum">     333</span>              : </span>
+<span id="L334"><span class="lineNum">     334</span>              : #ifdef CONFIG_DEBUG_LINUX_TRACING</span>
+<span id="L335"><span class="lineNum">     335</span>              : </span>
+<span id="L336"><span class="lineNum">     336</span>              : int wpa_debug_open_linux_tracing(void);</span>
+<span id="L337"><span class="lineNum">     337</span>              : void wpa_debug_close_linux_tracing(void);</span>
+<span id="L338"><span class="lineNum">     338</span>              : </span>
+<span id="L339"><span class="lineNum">     339</span>              : #else /* CONFIG_DEBUG_LINUX_TRACING */</span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span>              : static inline int wpa_debug_open_linux_tracing(void)</span>
+<span id="L342"><span class="lineNum">     342</span>              : {</span>
+<span id="L343"><span class="lineNum">     343</span>              :         return 0;</span>
+<span id="L344"><span class="lineNum">     344</span>              : }</span>
+<span id="L345"><span class="lineNum">     345</span>              : </span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           5 : static inline void wpa_debug_close_linux_tracing(void)</span></span>
+<span id="L347"><span class="lineNum">     347</span>              : {</span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">           5 : }</span></span>
+<span id="L349"><span class="lineNum">     349</span>              : </span>
+<span id="L350"><span class="lineNum">     350</span>              : #endif /* CONFIG_DEBUG_LINUX_TRACING */</span>
+<span id="L351"><span class="lineNum">     351</span>              : </span>
+<span id="L352"><span class="lineNum">     352</span>              : </span>
+<span id="L353"><span class="lineNum">     353</span>              : #ifdef EAPOL_TEST</span>
+<span id="L354"><span class="lineNum">     354</span>              : #define WPA_ASSERT(a)                                                  \</span>
+<span id="L355"><span class="lineNum">     355</span>              :         do {                                                           \</span>
+<span id="L356"><span class="lineNum">     356</span>              :                 if (!(a)) {                                            \</span>
+<span id="L357"><span class="lineNum">     357</span>              :                         printf(&quot;WPA_ASSERT FAILED '&quot; #a &quot;' &quot;               \</span>
+<span id="L358"><span class="lineNum">     358</span>              :                                &quot;%s %s:%d\n&quot;,                         \</span>
+<span id="L359"><span class="lineNum">     359</span>              :                                __FUNCTION__, __FILE__, __LINE__);      \</span>
+<span id="L360"><span class="lineNum">     360</span>              :                         exit(1);                                       \</span>
+<span id="L361"><span class="lineNum">     361</span>              :                 }                                                      \</span>
+<span id="L362"><span class="lineNum">     362</span>              :         } while (0)</span>
+<span id="L363"><span class="lineNum">     363</span>              : #else</span>
+<span id="L364"><span class="lineNum">     364</span>              : #define WPA_ASSERT(a) do { } while (0)</span>
+<span id="L365"><span class="lineNum">     365</span>              : #endif</span>
+<span id="L366"><span class="lineNum">     366</span>              : </span>
+<span id="L367"><span class="lineNum">     367</span>              : const char * debug_level_str(int level);</span>
+<span id="L368"><span class="lineNum">     368</span>              : int str_to_debug_level(const char *s);</span>
+<span id="L369"><span class="lineNum">     369</span>              : </span>
+<span id="L370"><span class="lineNum">     370</span>              : #endif /* WPA_DEBUG_H */</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version </a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

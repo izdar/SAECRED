@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-build.info - crypto/sha1-prf.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">crypto</a> - sha1-prf.c<span style="font-size: 80%;"> (source / <a href="sha1-prf.c.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-build.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">91.3&nbsp;%</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">21</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-21 16:38:54</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /*</span>
+<span id="L2"><span class="lineNum">       2</span>              :  * SHA1-based PRF</span>
+<span id="L3"><span class="lineNum">       3</span>              :  * Copyright (c) 2003-2005, Jouni Malinen &lt;j@w1.fi&gt;</span>
+<span id="L4"><span class="lineNum">       4</span>              :  *</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * This software may be distributed under the terms of the BSD license.</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * See README for more details.</span>
+<span id="L7"><span class="lineNum">       7</span>              :  */</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : #include &quot;includes.h&quot;</span>
+<span id="L10"><span class="lineNum">      10</span>              : </span>
+<span id="L11"><span class="lineNum">      11</span>              : #include &quot;common.h&quot;</span>
+<span id="L12"><span class="lineNum">      12</span>              : #include &quot;sha1.h&quot;</span>
+<span id="L13"><span class="lineNum">      13</span>              : #include &quot;crypto.h&quot;</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : /**</span>
+<span id="L17"><span class="lineNum">      17</span>              :  * sha1_prf - SHA1-based Pseudo-Random Function (PRF) (IEEE 802.11i, 8.5.1.1)</span>
+<span id="L18"><span class="lineNum">      18</span>              :  * @key: Key for PRF</span>
+<span id="L19"><span class="lineNum">      19</span>              :  * @key_len: Length of the key in bytes</span>
+<span id="L20"><span class="lineNum">      20</span>              :  * @label: A unique label for each purpose of the PRF</span>
+<span id="L21"><span class="lineNum">      21</span>              :  * @data: Extra data to bind into the key</span>
+<span id="L22"><span class="lineNum">      22</span>              :  * @data_len: Length of the data</span>
+<span id="L23"><span class="lineNum">      23</span>              :  * @buf: Buffer for the generated pseudo-random key</span>
+<span id="L24"><span class="lineNum">      24</span>              :  * @buf_len: Number of bytes of key to generate</span>
+<span id="L25"><span class="lineNum">      25</span>              :  * Returns: 0 on success, -1 of failure</span>
+<span id="L26"><span class="lineNum">      26</span>              :  *</span>
+<span id="L27"><span class="lineNum">      27</span>              :  * This function is used to derive new, cryptographically separate keys from a</span>
+<span id="L28"><span class="lineNum">      28</span>              :  * given key (e.g., PMK in IEEE 802.11i).</span>
+<span id="L29"><span class="lineNum">      29</span>              :  */</span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC tlaBgGNC">           5 : int sha1_prf(const u8 *key, size_t key_len, const char *label,</span></span>
+<span id="L31"><span class="lineNum">      31</span>              :              const u8 *data, size_t data_len, u8 *buf, size_t buf_len)</span>
+<span id="L32"><span class="lineNum">      32</span>              : {</span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           5 :         u8 counter = 0;</span></span>
+<span id="L34"><span class="lineNum">      34</span>              :         size_t pos, plen;</span>
+<span id="L35"><span class="lineNum">      35</span>              :         u8 hash[SHA1_MAC_LEN];</span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           5 :         size_t label_len = os_strlen(label) + 1;</span></span>
+<span id="L37"><span class="lineNum">      37</span>              :         const unsigned char *addr[3];</span>
+<span id="L38"><span class="lineNum">      38</span>              :         size_t len[3];</span>
+<span id="L39"><span class="lineNum">      39</span>              : </span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           5 :         addr[0] = (u8 *) label;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           5 :         len[0] = label_len;</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           5 :         addr[1] = data;</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           5 :         len[1] = data_len;</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           5 :         addr[2] = &amp;counter;</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           5 :         len[2] = 1;</span></span>
+<span id="L46"><span class="lineNum">      46</span>              : </span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           5 :         pos = 0;</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          10 :         while (pos &lt; buf_len) {</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">          10 :                 plen = buf_len - pos;</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">          10 :                 if (plen &gt;= SHA1_MAC_LEN) {</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           5 :                         if (hmac_sha1_vector(key, key_len, 3, addr, len,</span></span>
+<span id="L52"><span class="lineNum">      52</span>              :                                              &amp;buf[pos]))</span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC tlaBgUNC">           0 :                                 return -1;</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC tlaBgGNC">           5 :                         pos += SHA1_MAC_LEN;</span></span>
+<span id="L55"><span class="lineNum">      55</span>              :                 } else {</span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           5 :                         if (hmac_sha1_vector(key, key_len, 3, addr, len,</span></span>
+<span id="L57"><span class="lineNum">      57</span>              :                                              hash))</span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC tlaBgUNC">           0 :                                 return -1;</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC tlaBgGNC">           5 :                         os_memcpy(&amp;buf[pos], hash, plen);</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           5 :                         break;</span></span>
+<span id="L61"><span class="lineNum">      61</span>              :                 }</span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           5 :                 counter++;</span></span>
+<span id="L63"><span class="lineNum">      63</span>              :         }</span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           5 :         forced_memzero(hash, sizeof(hash));</span></span>
+<span id="L65"><span class="lineNum">      65</span>              : </span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           5 :         return 0;</span></span>
+<span id="L67"><span class="lineNum">      67</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version </a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

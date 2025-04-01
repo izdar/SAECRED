@@ -1,4 +1,3 @@
-from Alphabet import *
 from settings import *
 import os
 import json
@@ -67,8 +66,7 @@ class Driver:
 		self.peer_confirm = None
 		self.RSNinfo = None
 
-		# self.L2sock = L2Socket(type=ETH_P_ALL, iface=iface)
-		self.L2sock = None
+		self.L2sock = L2Socket(type=ETH_P_ALL, iface=iface)
 		self.beacon = {}
 		self.outputSentence = []
 		self._triggerAC = False
@@ -271,7 +269,6 @@ class Driver:
 	def sniffPackets(self, func):
 		try:
 			self.capture = sniff(iface=iface, prn=func, stop_filter=lambda x: self.packetQueued.is_set(), timeout=TIMEOUT)
-			wrpcap("test.pcap",self.capture)
 		except Scapy_Exception as e:
 			self.sniffTimeout = True
 
@@ -1062,7 +1059,7 @@ def main():
 		subprocess.check_output(["sudo", "airmon-ng","check","kill"])
 		time.sleep(2)
 		if HOSTAP_TEST:
-			subprocess.call(["bash", "%s%s"%(AP_PATH, "run_ap.sh")])
+			subprocess.call(["bash", "run_ap.sh"])
 
 		driver = Driver()
 		if HOSTAP_TEST:
