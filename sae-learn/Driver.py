@@ -912,11 +912,12 @@ class Driver:
 
 	def communicate_with_ocaml(self, message_file, response_file):
 		messageFields = {'password' : 'correctPassword', 'group_id' : 19}
+		start_time = time.time()
 		while True:
 			if not HOSTAP_TEST:
 				self.check_lock()
-			else:
-				self.hard_reset()
+			elif time.time() - start_time >= 3600:
+				start_time = self.hard_reset()
 			messages = self.read_messages(message_file)
 			print(messages)
 			for index, message in enumerate(messages):
