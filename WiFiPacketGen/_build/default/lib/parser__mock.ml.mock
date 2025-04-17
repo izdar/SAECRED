@@ -1,0 +1,1212 @@
+
+type token = 
+  | TYPEANNOT
+  | TRUE
+  | TIMES
+  | STRING of (
+# 55 "lib/parser.mly"
+      (string)
+# 10 "lib/parser__mock.ml.mock"
+)
+  | STR
+  | SEMICOLON
+  | RPAREN
+  | RCURLY
+  | PRODUCTION
+  | PLUS
+  | OPTION
+  | OF
+  | MINUS
+  | MACHINEINT
+  | LXOR
+  | LTE
+  | LT
+  | LPAREN
+  | LOR
+  | LNOT
+  | LIMPLIES
+  | LENGTH
+  | LCURLY
+  | LAND
+  | INTTOBITVECTOR
+  | INTEGER of (
+# 52 "lib/parser.mly"
+      (int)
+# 36 "lib/parser__mock.ml.mock"
+)
+  | INT
+  | ID of (
+# 54 "lib/parser.mly"
+      (string)
+# 42 "lib/parser__mock.ml.mock"
+)
+  | GTE
+  | GT
+  | FALSE
+  | EQ
+  | EOF
+  | DOT
+  | DIV
+  | COMMA
+  | CASE
+  | BVXOR
+  | BVOR
+  | BVNOT
+  | BVLTE
+  | BVLT
+  | BVGTE
+  | BVGT
+  | BVAND
+  | BOOL
+  | BITVECTOR
+  | BITS of (
+# 53 "lib/parser.mly"
+      (bool list)
+# 66 "lib/parser__mock.ml.mock"
+)
+  | BITLIST
+  | ASSIGN
+  | ARROW
+
+# 1 "lib/parser.mly"
+  
+open Ast
+
+# 76 "lib/parser__mock.ml.mock"
+
+let menhir_begin_marker =
+  0
+
+and (xv_separated_nonempty_list_OPTION_rhs_, xv_semantic_constraints, xv_semantic_constraint_list, xv_semantic_constraint, xv_s, xv_rhs, xv_option_semantic_constraints_, xv_option_index_, xv_nt_expr, xv_nonterminal, xv_nonempty_list_grammar_element_, xv_list_element_, xv_index, xv_il_type, xv_grammar_element, xv_expr, xv_element, xv_case_list) =
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 252 "<standard.mly>"
+                    xs
+# 85 "lib/parser__mock.ml.mock"
+   : 'tv_separated_nonempty_list_OPTION_rhs_) (_startpos_xs_ : Lexing.position) (_endpos_xs_ : Lexing.position) (_startofs_xs_ : int) (_endofs_xs_ : int) (_loc_xs_ : Lexing.position * Lexing.position) (
+# 252 "<standard.mly>"
+        _2
+# 89 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 252 "<standard.mly>"
+  x
+# 93 "lib/parser__mock.ml.mock"
+   : 'tv_rhs) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_separated_nonempty_list_OPTION_rhs_ ->
+    
+# 253 "<standard.mly>"
+    ( x :: xs )
+# 98 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 249 "<standard.mly>"
+  x
+# 103 "lib/parser__mock.ml.mock"
+   : 'tv_rhs) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_separated_nonempty_list_OPTION_rhs_ ->
+    
+# 250 "<standard.mly>"
+    ( [ x ] )
+# 108 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 113 "<standard.mly>"
+  x
+# 113 "lib/parser__mock.ml.mock"
+   : 'tv_semantic_constraints) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_option_semantic_constraints_ ->
+    
+# 114 "<standard.mly>"
+    ( Some x )
+# 118 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) : 'tv_option_semantic_constraints_ ->
+    
+# 111 "<standard.mly>"
+    ( None )
+# 124 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 113 "<standard.mly>"
+  x
+# 129 "lib/parser__mock.ml.mock"
+   : 'tv_index) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_option_index_ ->
+    
+# 114 "<standard.mly>"
+    ( Some x )
+# 134 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) : 'tv_option_index_ ->
+    
+# 111 "<standard.mly>"
+    ( None )
+# 140 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 230 "<standard.mly>"
+         xs
+# 145 "lib/parser__mock.ml.mock"
+   : 'tv_nonempty_list_grammar_element_) (_startpos_xs_ : Lexing.position) (_endpos_xs_ : Lexing.position) (_startofs_xs_ : int) (_endofs_xs_ : int) (_loc_xs_ : Lexing.position * Lexing.position) (
+# 230 "<standard.mly>"
+  x
+# 149 "lib/parser__mock.ml.mock"
+   : 'tv_grammar_element) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_nonempty_list_grammar_element_ ->
+    
+# 231 "<standard.mly>"
+    ( x :: xs )
+# 154 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 227 "<standard.mly>"
+  x
+# 159 "lib/parser__mock.ml.mock"
+   : 'tv_grammar_element) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_nonempty_list_grammar_element_ ->
+    
+# 228 "<standard.mly>"
+    ( [ x ] )
+# 164 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 218 "<standard.mly>"
+         xs
+# 169 "lib/parser__mock.ml.mock"
+   : 'tv_list_element_) (_startpos_xs_ : Lexing.position) (_endpos_xs_ : Lexing.position) (_startofs_xs_ : int) (_endofs_xs_ : int) (_loc_xs_ : Lexing.position * Lexing.position) (
+# 218 "<standard.mly>"
+  x
+# 173 "lib/parser__mock.ml.mock"
+   : 'tv_element) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_list_element_ ->
+    
+# 219 "<standard.mly>"
+    ( x :: xs )
+# 178 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) : 'tv_list_element_ ->
+    
+# 216 "<standard.mly>"
+    ( [] )
+# 184 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 109 "lib/parser.mly"
+                                         _3
+# 189 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 109 "lib/parser.mly"
+          scs
+# 193 "lib/parser__mock.ml.mock"
+   : 'tv_semantic_constraint_list) (_startpos_scs_ : Lexing.position) (_endpos_scs_ : Lexing.position) (_startofs_scs_ : int) (_endofs_scs_ : int) (_loc_scs_ : Lexing.position * Lexing.position) (
+# 109 "lib/parser.mly"
+ _1
+# 197 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_semantic_constraints ->
+    
+# 109 "lib/parser.mly"
+                                                  ( scs )
+# 202 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 113 "lib/parser.mly"
+                                       scs
+# 207 "lib/parser__mock.ml.mock"
+   : 'tv_semantic_constraint_list) (_startpos_scs_ : Lexing.position) (_endpos_scs_ : Lexing.position) (_startofs_scs_ : int) (_endofs_scs_ : int) (_loc_scs_ : Lexing.position * Lexing.position) (
+# 113 "lib/parser.mly"
+                           _2
+# 211 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 113 "lib/parser.mly"
+  sc
+# 215 "lib/parser__mock.ml.mock"
+   : 'tv_semantic_constraint) (_startpos_sc_ : Lexing.position) (_endpos_sc_ : Lexing.position) (_startofs_sc_ : int) (_endofs_sc_ : int) (_loc_sc_ : Lexing.position * Lexing.position) : 'tv_semantic_constraint_list ->
+    
+# 113 "lib/parser.mly"
+                                                                       ( sc :: scs )
+# 220 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 112 "lib/parser.mly"
+                          _2
+# 225 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 112 "lib/parser.mly"
+  sc
+# 229 "lib/parser__mock.ml.mock"
+   : 'tv_semantic_constraint) (_startpos_sc_ : Lexing.position) (_endpos_sc_ : Lexing.position) (_startofs_sc_ : int) (_endofs_sc_ : int) (_loc_sc_ : Lexing.position * Lexing.position) : 'tv_semantic_constraint_list ->
+    
+# 112 "lib/parser.mly"
+                                      ( [sc] )
+# 234 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 121 "lib/parser.mly"
+  e
+# 239 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) : 'tv_semantic_constraint ->
+    
+# 121 "lib/parser.mly"
+           ( SyGuSExpr e )
+# 244 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 120 "lib/parser.mly"
+                            e
+# 249 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 120 "lib/parser.mly"
+                   _2
+# 253 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 120 "lib/parser.mly"
+  nt
+# 257 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_semantic_constraint ->
+    
+# 120 "lib/parser.mly"
+                                     ( Dependency (nt, e) )
+# 262 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 77 "lib/parser.mly"
+                     _2
+# 267 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 77 "lib/parser.mly"
+   d
+# 271 "lib/parser__mock.ml.mock"
+   : 'tv_list_element_) (_startpos_d_ : Lexing.position) (_endpos_d_ : Lexing.position) (_startofs_d_ : int) (_endofs_d_ : int) (_loc_d_ : Lexing.position * Lexing.position) : (
+# 73 "lib/parser.mly"
+       (Ast.ast)
+# 275 "lib/parser__mock.ml.mock"
+  ) ->
+    (
+# 77 "lib/parser.mly"
+                          ( d )
+# 280 "lib/parser__mock.ml.mock"
+     : 'tv_s) in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 93 "lib/parser.mly"
+                                        scs
+# 285 "lib/parser__mock.ml.mock"
+   : 'tv_option_semantic_constraints_) (_startpos_scs_ : Lexing.position) (_endpos_scs_ : Lexing.position) (_startofs_scs_ : int) (_endofs_scs_ : int) (_loc_scs_ : Lexing.position * Lexing.position) (
+# 93 "lib/parser.mly"
+  ges
+# 289 "lib/parser__mock.ml.mock"
+   : 'tv_nonempty_list_grammar_element_) (_startpos_ges_ : Lexing.position) (_endpos_ges_ : Lexing.position) (_startofs_ges_ : int) (_endofs_ges_ : int) (_loc_ges_ : Lexing.position * Lexing.position) : 'tv_rhs ->
+    
+# 94 "lib/parser.mly"
+  ( 
+    match scs with 
+    | None -> Rhs (ges, [])
+    | Some scs -> Rhs (ges, scs) 
+  )
+# 298 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 178 "lib/parser.mly"
+                         nts
+# 303 "lib/parser__mock.ml.mock"
+   : 'tv_nt_expr) (_startpos_nts_ : Lexing.position) (_endpos_nts_ : Lexing.position) (_startofs_nts_ : int) (_endofs_nts_ : int) (_loc_nts_ : Lexing.position * Lexing.position) (
+# 178 "lib/parser.mly"
+                   _2
+# 307 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 178 "lib/parser.mly"
+  nt
+# 311 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_nt_expr ->
+    
+# 178 "lib/parser.mly"
+                                        ( nt :: nts )
+# 316 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 177 "lib/parser.mly"
+  nt
+# 321 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_nt_expr ->
+    
+# 177 "lib/parser.mly"
+                   ( [nt] )
+# 326 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 181 "lib/parser.mly"
+               _3
+# 331 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 181 "lib/parser.mly"
+      str
+# 335 "lib/parser__mock.ml.mock"
+   : (
+# 54 "lib/parser.mly"
+      (string)
+# 339 "lib/parser__mock.ml.mock"
+  )) (_startpos_str_ : Lexing.position) (_endpos_str_ : Lexing.position) (_startofs_str_ : int) (_endofs_str_ : int) (_loc_str_ : Lexing.position * Lexing.position) (
+# 181 "lib/parser.mly"
+ _1
+# 343 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_nonterminal ->
+    
+# 181 "lib/parser.mly"
+                    ( str )
+# 348 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 174 "lib/parser.mly"
+                          _3
+# 353 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 174 "lib/parser.mly"
+          index
+# 357 "lib/parser__mock.ml.mock"
+   : (
+# 52 "lib/parser.mly"
+      (int)
+# 361 "lib/parser__mock.ml.mock"
+  )) (_startpos_index_ : Lexing.position) (_endpos_index_ : Lexing.position) (_startofs_index_ : int) (_endofs_index_ : int) (_loc_index_ : Lexing.position * Lexing.position) (
+# 174 "lib/parser.mly"
+ _1
+# 365 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_index ->
+    
+# 174 "lib/parser.mly"
+                                   ( index )
+# 370 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 106 "lib/parser.mly"
+                                      _4
+# 375 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 106 "lib/parser.mly"
+                      width
+# 379 "lib/parser__mock.ml.mock"
+   : (
+# 52 "lib/parser.mly"
+      (int)
+# 383 "lib/parser__mock.ml.mock"
+  )) (_startpos_width_ : Lexing.position) (_endpos_width_ : Lexing.position) (_startofs_width_ : int) (_endofs_width_ : int) (_loc_width_ : Lexing.position * Lexing.position) (
+# 106 "lib/parser.mly"
+             _2
+# 387 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 106 "lib/parser.mly"
+ _1
+# 391 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 106 "lib/parser.mly"
+                                               ( MachineInt (width) )
+# 396 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 105 "lib/parser.mly"
+ _1
+# 401 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 105 "lib/parser.mly"
+          ( BitList )
+# 406 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 104 "lib/parser.mly"
+                                   _4
+# 411 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 104 "lib/parser.mly"
+                     len
+# 415 "lib/parser__mock.ml.mock"
+   : (
+# 52 "lib/parser.mly"
+      (int)
+# 419 "lib/parser__mock.ml.mock"
+  )) (_startpos_len_ : Lexing.position) (_endpos_len_ : Lexing.position) (_startofs_len_ : int) (_endofs_len_ : int) (_loc_len_ : Lexing.position * Lexing.position) (
+# 104 "lib/parser.mly"
+            _2
+# 423 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 104 "lib/parser.mly"
+ _1
+# 427 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 104 "lib/parser.mly"
+                                            ( BitVector (len) )
+# 432 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 103 "lib/parser.mly"
+ _1
+# 437 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 103 "lib/parser.mly"
+      ( String )
+# 442 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 102 "lib/parser.mly"
+ _1
+# 447 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 102 "lib/parser.mly"
+      ( Int )
+# 452 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 101 "lib/parser.mly"
+ _1
+# 457 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_type ->
+    
+# 101 "lib/parser.mly"
+       ( Bool )
+# 462 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 117 "lib/parser.mly"
+              nt
+# 467 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) (
+# 117 "lib/parser.mly"
+         _2
+# 471 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 117 "lib/parser.mly"
+  i
+# 475 "lib/parser__mock.ml.mock"
+   : (
+# 54 "lib/parser.mly"
+      (string)
+# 479 "lib/parser__mock.ml.mock"
+  )) (_startpos_i_ : Lexing.position) (_endpos_i_ : Lexing.position) (_startofs_i_ : int) (_endofs_i_ : int) (_loc_i_ : Lexing.position * Lexing.position) : 'tv_grammar_element ->
+    
+# 117 "lib/parser.mly"
+                                ( NamedNonterminal (i, nt) )
+# 484 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 116 "lib/parser.mly"
+  nt
+# 489 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_grammar_element ->
+    
+# 116 "lib/parser.mly"
+                   ( Nonterminal(nt) )
+# 494 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 167 "lib/parser.mly"
+                   _3
+# 499 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 167 "lib/parser.mly"
+          e
+# 503 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 167 "lib/parser.mly"
+ _1
+# 507 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 167 "lib/parser.mly"
+                            ( e )
+# 512 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 165 "lib/parser.mly"
+               index
+# 517 "lib/parser__mock.ml.mock"
+   : 'tv_option_index_) (_startpos_index_ : Lexing.position) (_endpos_index_ : Lexing.position) (_startofs_index_ : int) (_endofs_index_ : int) (_loc_index_ : Lexing.position * Lexing.position) (
+# 165 "lib/parser.mly"
+  e
+# 521 "lib/parser__mock.ml.mock"
+   : 'tv_nt_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 165 "lib/parser.mly"
+                                      ( NTExpr (e, index) )
+# 526 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 163 "lib/parser.mly"
+                         cs
+# 531 "lib/parser__mock.ml.mock"
+   : 'tv_case_list) (_startpos_cs_ : Lexing.position) (_endpos_cs_ : Lexing.position) (_startofs_cs_ : int) (_endofs_cs_ : int) (_loc_cs_ : Lexing.position * Lexing.position) (
+# 163 "lib/parser.mly"
+                    _3
+# 535 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 163 "lib/parser.mly"
+        e
+# 539 "lib/parser__mock.ml.mock"
+   : 'tv_nt_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 163 "lib/parser.mly"
+ _1
+# 543 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 163 "lib/parser.mly"
+                                        ( CaseExpr (e, cs) )
+# 548 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 161 "lib/parser.mly"
+                           _4
+# 553 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 161 "lib/parser.mly"
+                  e
+# 557 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 161 "lib/parser.mly"
+         _2
+# 561 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 161 "lib/parser.mly"
+ _1
+# 565 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 161 "lib/parser.mly"
+                                    ( Length (e) )
+# 570 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 160 "lib/parser.mly"
+                                           _6
+# 575 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 160 "lib/parser.mly"
+                                  e
+# 579 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 160 "lib/parser.mly"
+                          _4
+# 583 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 160 "lib/parser.mly"
+          width
+# 587 "lib/parser__mock.ml.mock"
+   : (
+# 52 "lib/parser.mly"
+      (int)
+# 591 "lib/parser__mock.ml.mock"
+  )) (_startpos_width_ : Lexing.position) (_endpos_width_ : Lexing.position) (_startofs_width_ : int) (_endofs_width_ : int) (_loc_width_ : Lexing.position * Lexing.position) (
+# 159 "lib/parser.mly"
+                 _2
+# 596 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 159 "lib/parser.mly"
+ _1
+# 600 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 160 "lib/parser.mly"
+                                                    ( BVCast (width, e) )
+# 605 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 157 "lib/parser.mly"
+                             _4
+# 610 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 157 "lib/parser.mly"
+                   bl
+# 614 "lib/parser__mock.ml.mock"
+   : (
+# 53 "lib/parser.mly"
+      (bool list)
+# 618 "lib/parser__mock.ml.mock"
+  )) (_startpos_bl_ : Lexing.position) (_endpos_bl_ : Lexing.position) (_startofs_bl_ : int) (_endofs_bl_ : int) (_loc_bl_ : Lexing.position * Lexing.position) (
+# 157 "lib/parser.mly"
+         _2
+# 622 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 157 "lib/parser.mly"
+ _1
+# 626 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 157 "lib/parser.mly"
+                                      ( BLConst (bl) )
+# 631 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 156 "lib/parser.mly"
+  bv
+# 636 "lib/parser__mock.ml.mock"
+   : (
+# 53 "lib/parser.mly"
+      (bool list)
+# 640 "lib/parser__mock.ml.mock"
+  )) (_startpos_bv_ : Lexing.position) (_endpos_bv_ : Lexing.position) (_startofs_bv_ : int) (_endofs_bv_ : int) (_loc_bv_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 156 "lib/parser.mly"
+            ( BVConst (List.length bv, bv) )
+# 645 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 155 "lib/parser.mly"
+ _1
+# 650 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 155 "lib/parser.mly"
+         ( BConst (false) )
+# 655 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 154 "lib/parser.mly"
+ _1
+# 660 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 154 "lib/parser.mly"
+        ( BConst (true) )
+# 665 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 153 "lib/parser.mly"
+  s
+# 670 "lib/parser__mock.ml.mock"
+   : (
+# 55 "lib/parser.mly"
+      (string)
+# 674 "lib/parser__mock.ml.mock"
+  )) (_startpos_s_ : Lexing.position) (_endpos_s_ : Lexing.position) (_startofs_s_ : int) (_endofs_s_ : int) (_loc_s_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 153 "lib/parser.mly"
+              ( StrConst (s) )
+# 679 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 152 "lib/parser.mly"
+  i
+# 684 "lib/parser__mock.ml.mock"
+   : (
+# 52 "lib/parser.mly"
+      (int)
+# 688 "lib/parser__mock.ml.mock"
+  )) (_startpos_i_ : Lexing.position) (_endpos_i_ : Lexing.position) (_startofs_i_ : int) (_endofs_i_ : int) (_loc_i_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 152 "lib/parser.mly"
+               ( IntConst (i) )
+# 693 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 150 "lib/parser.mly"
+        e
+# 698 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 150 "lib/parser.mly"
+ _1
+# 702 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 150 "lib/parser.mly"
+                 ( UnOp (LNot, e) )
+# 707 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 149 "lib/parser.mly"
+         e
+# 712 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 149 "lib/parser.mly"
+ _1
+# 716 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 149 "lib/parser.mly"
+                  ( UnOp (UMinus, e) )
+# 721 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 148 "lib/parser.mly"
+        e
+# 726 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 148 "lib/parser.mly"
+ _1
+# 730 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 148 "lib/parser.mly"
+                 ( UnOp (UPlus, e) )
+# 735 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 147 "lib/parser.mly"
+         e
+# 740 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e_ : Lexing.position) (_endpos_e_ : Lexing.position) (_startofs_e_ : int) (_endofs_e_ : int) (_loc_e_ : Lexing.position * Lexing.position) (
+# 147 "lib/parser.mly"
+ _1
+# 744 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 147 "lib/parser.mly"
+                  ( UnOp (BVNot, e) )
+# 749 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 145 "lib/parser.mly"
+                    e2
+# 754 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 145 "lib/parser.mly"
+            _2
+# 758 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 145 "lib/parser.mly"
+  e1
+# 762 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 145 "lib/parser.mly"
+                              ( CompOp (e1, BVGte, e2) )
+# 767 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 144 "lib/parser.mly"
+                   e2
+# 772 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 144 "lib/parser.mly"
+            _2
+# 776 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 144 "lib/parser.mly"
+  e1
+# 780 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 144 "lib/parser.mly"
+                             ( CompOp (e1, BVGt, e2) )
+# 785 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 143 "lib/parser.mly"
+                    e2
+# 790 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 143 "lib/parser.mly"
+            _2
+# 794 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 143 "lib/parser.mly"
+  e1
+# 798 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 143 "lib/parser.mly"
+                              ( CompOp (e1, BVLte, e2) )
+# 803 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 142 "lib/parser.mly"
+                   e2
+# 808 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 142 "lib/parser.mly"
+            _2
+# 812 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 142 "lib/parser.mly"
+  e1
+# 816 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 142 "lib/parser.mly"
+                             ( CompOp (e1, BVLt, e2) )
+# 821 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 141 "lib/parser.mly"
+                 e2
+# 826 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 141 "lib/parser.mly"
+            _2
+# 830 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 141 "lib/parser.mly"
+  e1
+# 834 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 141 "lib/parser.mly"
+                           ( CompOp (e1, Eq, e2) )
+# 839 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 140 "lib/parser.mly"
+                  e2
+# 844 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 140 "lib/parser.mly"
+            _2
+# 848 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 140 "lib/parser.mly"
+  e1
+# 852 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 140 "lib/parser.mly"
+                            ( CompOp (e1, Gte, e2) )
+# 857 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 139 "lib/parser.mly"
+                 e2
+# 862 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 139 "lib/parser.mly"
+            _2
+# 866 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 139 "lib/parser.mly"
+  e1
+# 870 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 139 "lib/parser.mly"
+                           ( CompOp (e1, Gt, e2) )
+# 875 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 138 "lib/parser.mly"
+                  e2
+# 880 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 138 "lib/parser.mly"
+            _2
+# 884 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 138 "lib/parser.mly"
+  e1
+# 888 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 138 "lib/parser.mly"
+                            ( CompOp (e1, Lte, e2) )
+# 893 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 137 "lib/parser.mly"
+                 e2
+# 898 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 137 "lib/parser.mly"
+            _2
+# 902 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 137 "lib/parser.mly"
+  e1
+# 906 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 137 "lib/parser.mly"
+                           ( CompOp (e1, Lt, e2) )
+# 911 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 135 "lib/parser.mly"
+                    e2
+# 916 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 135 "lib/parser.mly"
+            _2
+# 920 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 135 "lib/parser.mly"
+  e1
+# 924 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 135 "lib/parser.mly"
+                              ( BinOp (e1, BVXor, e2) )
+# 929 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 134 "lib/parser.mly"
+                   e2
+# 934 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 134 "lib/parser.mly"
+            _2
+# 938 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 134 "lib/parser.mly"
+  e1
+# 942 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 134 "lib/parser.mly"
+                             ( BinOp (e1, BVOr, e2) )
+# 947 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 133 "lib/parser.mly"
+                    e2
+# 952 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 133 "lib/parser.mly"
+            _2
+# 956 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 133 "lib/parser.mly"
+  e1
+# 960 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 133 "lib/parser.mly"
+                              ( BinOp (e1, BVAnd, e2) )
+# 965 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 132 "lib/parser.mly"
+                  e2
+# 970 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 132 "lib/parser.mly"
+            _2
+# 974 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 132 "lib/parser.mly"
+  e1
+# 978 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 132 "lib/parser.mly"
+                            ( BinOp (e1, Div, e2) )
+# 983 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 131 "lib/parser.mly"
+                    e2
+# 988 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 131 "lib/parser.mly"
+            _2
+# 992 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 131 "lib/parser.mly"
+  e1
+# 996 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 131 "lib/parser.mly"
+                              ( BinOp (e1, Times, e2) )
+# 1001 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 130 "lib/parser.mly"
+                    e2
+# 1006 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 130 "lib/parser.mly"
+            _2
+# 1010 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 130 "lib/parser.mly"
+  e1
+# 1014 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 130 "lib/parser.mly"
+                              ( BinOp (e1, Minus, e2) )
+# 1019 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 129 "lib/parser.mly"
+                   e2
+# 1024 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 129 "lib/parser.mly"
+            _2
+# 1028 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 129 "lib/parser.mly"
+  e1
+# 1032 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 129 "lib/parser.mly"
+                             ( BinOp (e1, Plus, e2) )
+# 1037 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 128 "lib/parser.mly"
+                       e2
+# 1042 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 128 "lib/parser.mly"
+            _2
+# 1046 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 128 "lib/parser.mly"
+  e1
+# 1050 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 128 "lib/parser.mly"
+                                 ( BinOp (e1, LImplies, e2) )
+# 1055 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 127 "lib/parser.mly"
+                   e2
+# 1060 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 127 "lib/parser.mly"
+            _2
+# 1064 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 127 "lib/parser.mly"
+  e1
+# 1068 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 127 "lib/parser.mly"
+                             ( BinOp (e1, LXor, e2) )
+# 1073 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 126 "lib/parser.mly"
+                  e2
+# 1078 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 126 "lib/parser.mly"
+            _2
+# 1082 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 126 "lib/parser.mly"
+  e1
+# 1086 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 126 "lib/parser.mly"
+                            ( BinOp (e1, LOr, e2) )
+# 1091 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 125 "lib/parser.mly"
+                   e2
+# 1096 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 125 "lib/parser.mly"
+            _2
+# 1100 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 125 "lib/parser.mly"
+  e1
+# 1104 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) : 'tv_expr ->
+    
+# 125 "lib/parser.mly"
+                             ( BinOp (e1, LAnd, e2) )
+# 1109 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 89 "lib/parser.mly"
+                                                                            _4
+# 1114 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 89 "lib/parser.mly"
+                                rhss
+# 1118 "lib/parser__mock.ml.mock"
+   : 'tv_separated_nonempty_list_OPTION_rhs_) (_startpos_rhss_ : Lexing.position) (_endpos_rhss_ : Lexing.position) (_startofs_rhss_ : int) (_endofs_rhss_ : int) (_loc_rhss_ : Lexing.position * Lexing.position) (
+# 89 "lib/parser.mly"
+                   _2
+# 1122 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 89 "lib/parser.mly"
+  nt
+# 1126 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_element ->
+    
+# 90 "lib/parser.mly"
+  ( ProdRule (nt, rhss) )
+# 1131 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 82 "lib/parser.mly"
+                                     _5
+# 1136 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__5_ : Lexing.position) (_endpos__5_ : Lexing.position) (_startofs__5_ : int) (_endofs__5_ : int) (_loc__5_ : Lexing.position * Lexing.position) (
+# 82 "lib/parser.mly"
+  scs
+# 1140 "lib/parser__mock.ml.mock"
+   : 'tv_option_semantic_constraints_) (_startpos_scs_ : Lexing.position) (_endpos_scs_ : Lexing.position) (_startofs_scs_ : int) (_endofs_scs_ : int) (_loc_scs_ : Lexing.position * Lexing.position) (
+# 81 "lib/parser.mly"
+                               t
+# 1144 "lib/parser__mock.ml.mock"
+   : 'tv_il_type) (_startpos_t_ : Lexing.position) (_endpos_t_ : Lexing.position) (_startofs_t_ : int) (_endofs_t_ : int) (_loc_t_ : Lexing.position * Lexing.position) (
+# 81 "lib/parser.mly"
+                   _2
+# 1148 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 81 "lib/parser.mly"
+  nt
+# 1152 "lib/parser__mock.ml.mock"
+   : 'tv_nonterminal) (_startpos_nt_ : Lexing.position) (_endpos_nt_ : Lexing.position) (_startofs_nt_ : int) (_endofs_nt_ : int) (_loc_nt_ : Lexing.position * Lexing.position) : 'tv_element ->
+    
+# 83 "lib/parser.mly"
+  ( 
+    match scs with 
+    | None -> TypeAnnotation (nt, t, []) 
+    | Some scs -> TypeAnnotation (nt, t, scs) 
+  )
+# 1161 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 171 "lib/parser.mly"
+                                          cs
+# 1166 "lib/parser__mock.ml.mock"
+   : 'tv_case_list) (_startpos_cs_ : Lexing.position) (_endpos_cs_ : Lexing.position) (_startofs_cs_ : int) (_endofs_cs_ : int) (_loc_cs_ : Lexing.position * Lexing.position) (
+# 171 "lib/parser.mly"
+                               e2
+# 1170 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 171 "lib/parser.mly"
+                       _3
+# 1174 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 171 "lib/parser.mly"
+          e1
+# 1178 "lib/parser__mock.ml.mock"
+   : 'tv_nt_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) (
+# 171 "lib/parser.mly"
+ _1
+# 1182 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_case_list ->
+    
+# 171 "lib/parser.mly"
+                                                         ( (e1, e2) :: cs )
+# 1187 "lib/parser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 170 "lib/parser.mly"
+                               e2
+# 1192 "lib/parser__mock.ml.mock"
+   : 'tv_expr) (_startpos_e2_ : Lexing.position) (_endpos_e2_ : Lexing.position) (_startofs_e2_ : int) (_endofs_e2_ : int) (_loc_e2_ : Lexing.position * Lexing.position) (
+# 170 "lib/parser.mly"
+                       _3
+# 1196 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 170 "lib/parser.mly"
+          e1
+# 1200 "lib/parser__mock.ml.mock"
+   : 'tv_nt_expr) (_startpos_e1_ : Lexing.position) (_endpos_e1_ : Lexing.position) (_startofs_e1_ : int) (_endofs_e1_ : int) (_loc_e1_ : Lexing.position * Lexing.position) (
+# 170 "lib/parser.mly"
+ _1
+# 1204 "lib/parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_case_list ->
+    
+# 170 "lib/parser.mly"
+                                          ( [(e1, e2)] )
+# 1209 "lib/parser__mock.ml.mock"
+     in
+  ((let rec diverge() = diverge() in diverge()) : 'tv_separated_nonempty_list_OPTION_rhs_ * 'tv_semantic_constraints * 'tv_semantic_constraint_list * 'tv_semantic_constraint * 'tv_s * 'tv_rhs * 'tv_option_semantic_constraints_ * 'tv_option_index_ * 'tv_nt_expr * 'tv_nonterminal * 'tv_nonempty_list_grammar_element_ * 'tv_list_element_ * 'tv_index * 'tv_il_type * 'tv_grammar_element * 'tv_expr * 'tv_element * 'tv_case_list)
+
+and menhir_end_marker =
+  0

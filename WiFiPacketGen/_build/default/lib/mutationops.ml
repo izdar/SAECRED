@@ -1,0 +1,264 @@
+open Ast
+
+let first (tuple : ('a * 'b * 'c)) : 'a =
+    match tuple with
+    | (t1, _, _) -> t1
+  
+let second (tuple : ('a * 'b * 'c)) : 'b =
+    match tuple with
+    | (_,t2,_) -> t2
+
+let third (triple : ('a * 'b * 'c)) : 'c =
+    match triple with
+    | _, _, t3 -> t3
+;;
+  
+
+let random_element (lst: 'a list) : 'a =
+    if lst = [] then failwith "Empty list"
+    else begin
+      let len = List.length lst in
+      let random_index = Random.int len in
+      List.nth lst random_index
+    end
+
+let rec isPresentInList elem lst = 
+match lst with 
+| [] -> false 
+| x::xs -> if x =  elem then true else isPresentInList elem xs
+
+let rec isNonTerminalPresent nt_name prod_options = 
+    match prod_options with 
+    | [] -> false 
+    | Rhs(ge_list, _) :: xs -> (isPresentInList (Nonterminal nt_name) ge_list) || (isNonTerminalPresent nt_name xs) 
+    | _ :: ys -> isNonTerminalPresent nt_name ys 
+
+let rec removeFromList nt lst =
+    match lst with
+    | [] -> []
+    | x :: xs -> if x = nt then xs else (x :: removeFromList nt xs)
+
+(* let rec removeFromTupleList nt lst =
+    match lst with
+    | [] -> []
+    | (nt :: xs) -> xs
+    | x :: xs -> x :: removeFromList xs *)
+
+let apply_add_s1_to_rule production_options nt = 
+    (
+        List.map 
+            (fun rhs_prod_rul -> 
+                match rhs_prod_rul with 
+                | Rhs(geList, scList) -> 
+                    if isPresentInList (Nonterminal nt) geList
+                        then Rhs(geList @ [Nonterminal(nt)], scList) 
+                    else Rhs(geList, scList)
+                | StubbedRhs(s) -> StubbedRhs(s) 
+            )
+            production_options 
+    )
+let rec mutation_add_s1 g nt = 
+    match g with 
+    | [] -> ([], false) 
+    | ProdRule(nonTerminal, production_options):: xs -> 
+        (* if nonTerminal = "COMMIT" || nonTerminal = "CONFIRM"
+        then *)
+            let found = isNonTerminalPresent nt production_options in 
+            if found then  
+                let po = apply_add_s1_to_rule production_options nt in 
+                    (ProdRule(nonTerminal, po)::xs, true) 
+            (* else 
+                (ProdRule(nonTerminal, production_options)::xs, false)        *)
+            else 
+                let (gg, r) = mutation_add_s1 xs nt in 
+                (ProdRule(nonTerminal, production_options)::gg, r)   
+    | TypeAnnotation(v, w, x) :: ys -> 
+        let (gg, r) = mutation_add_s1 ys nt in
+        (TypeAnnotation(v, w, x)::gg, r)
+
+
+let rec isPresentInCaseList (nt:string) (caselist : case list) : bool = 
+    match caselist with 
+    | [] -> false 
+    | (nte, e)::xs -> (isPresentInList nt nte) || (isPresentInExpr nt e) || (isPresentInCaseList nt xs)
+and 
+ isPresentInExpr (nt:string) (e:expr) : bool = 
+    match e with 
+    | BinOp(e1, _, e2) -> (isPresentInExpr nt e1) || (isPresentInExpr nt e2)
+    | UnOp(_, e) -> (isPresentInExpr nt e)
+    | CompOp(e1, _, e2) -> (isPresentInExpr nt e1) || (isPresentInExpr nt e2)
+    | Length(e) -> (isPresentInExpr nt e)
+    | BVCast(_, e) -> (isPresentInExpr nt e)
+    | NTExpr(n, _) -> (isPresentInList nt n)
+    | CaseExpr(nte, caselist) -> (isPresentInList nt nte) || isPresentInCaseList nt caselist
+    | _ -> false 
+    
+
+
+let rec remove_constraints (nt : string) (clist : semantic_constraint list) : semantic_constraint list = 
+    match clist with 
+    | [] -> [] 
+    | x::xs -> 
+        match x with 
+        | Dependency(nonTerminal, e) -> 
+            if nonTerminal = nt || isPresentInExpr nt e 
+                then (remove_constraints nt xs) 
+            else Dependency(nonTerminal, e)::(remove_constraints nt xs)  
+        | SyGuSExpr(e) -> 
+            if isPresentInExpr nt e 
+                then (remove_constraints nt xs)
+            else SyGuSExpr(e)::(remove_constraints nt xs) 
+
+let rec apply_delete_to_rule nt production_options = 
+    match production_options with
+    | [] -> [] 
+    | Rhs(geList, scList) :: xs -> 
+        if (List.length geList) > 1 then
+            let deleteFromGrammarElementList = removeFromList (Nonterminal nt) geList in
+            let deleteFromConstraintList = remove_constraints nt scList in
+            Rhs(deleteFromGrammarElementList, deleteFromConstraintList) :: xs 
+        else Rhs(geList, scList) :: xs
+    | StubbedRhs(s)::xs -> StubbedRhs(s) :: (apply_delete_to_rule nt xs) 
+
+let rec mutation_delete g nt =
+    match g with
+    | [] -> ([], false)
+    | ProdRule(nonTerminal, production_options) :: xs ->
+        (* if (nonTerminal = "SAE_PACKET")
+        then *)
+            let found = isNonTerminalPresent nt production_options in
+            if found then
+                let po = apply_delete_to_rule nt production_options in
+                    (ProdRule(nonTerminal, po) :: xs, true)
+            else 
+                let (gg, r) = mutation_delete xs nt in
+                (ProdRule(nonTerminal, production_options) :: gg, r) 
+                (* (ProdRule(nonTerminal, production_options)::xs, false)        *)
+            (* else 
+                let (gg, r) = mutation_delete xs nt
+                        in 
+                (ProdRule(nonTerminal, production_options) :: gg, r)    *)
+    | TypeAnnotation(v, w, x) :: ys -> 
+        let (gg, r) = mutation_delete ys nt 
+                in (TypeAnnotation(v, w, x)::gg, r)
+
+let update_constraint (nt : string) (cList : semantic_constraint list) (operation : bin_operator) : semantic_constraint list =
+    match cList with 
+    | [] -> []
+    | x :: xs ->
+        match x with
+        | Dependency(nonTerminal, (BVCast(i, expr))) -> 
+            if operation = Plus then
+                Dependency(nonTerminal, BVCast(i, BinOp(expr, Plus, IntConst 1))) :: xs
+            else if operation = Minus then
+                Dependency(nonTerminal, BVCast(i, BinOp(expr, Minus, IntConst 1))) :: xs
+            else Dependency(nonTerminal, BVCast(i, expr)) :: xs
+        | SyGuSExpr(UnOp(LNot, e)) -> 
+            if isPresentInExpr nt e 
+                then SyGuSExpr(e) :: xs
+            else SyGuSExpr(UnOp(LNot, e)) :: xs
+        | SyGuSExpr(e) -> 
+            if isPresentInExpr nt e 
+                then SyGuSExpr(UnOp(LNot, e)) :: xs
+            else SyGuSExpr(e) :: xs
+        | anything -> anything :: xs
+
+
+let rec apply_update_to_rule nt production_options operation =
+    match production_options with
+    | [] -> []
+    | Rhs(geList, scList) :: xs -> 
+        let updated_constraints = update_constraint nt scList operation in
+        Rhs(geList, updated_constraints) :: xs
+    | StubbedRhs(s) :: xs -> StubbedRhs(s) :: (apply_update_to_rule nt xs operation)
+
+let rec mutation_update g nt operation =
+    match g with
+    | [] -> ([], false)
+    | ProdRule(nonTerminal, production_options) :: xs ->
+        let found = isNonTerminalPresent nt production_options in
+            if found then
+                let po = apply_update_to_rule nt production_options operation in
+                    (ProdRule(nonTerminal, po) :: xs, true)
+            else 
+                let (gg, r) = mutation_update xs nt operation
+                    in 
+            (ProdRule(nonTerminal, production_options) :: gg, r)
+    | TypeAnnotation(v, w, x) :: ys -> 
+        if v = nt then
+            let po = update_constraint nt x operation in
+                (TypeAnnotation(v, w, po) :: ys, true)
+        else
+            let (gg, r) = mutation_update ys nt operation
+                in 
+                (TypeAnnotation(v, w, x) :: gg , r)
+
+let rec replace_element geList nt1 nt2 =
+    match geList with
+    | [] -> failwith "error crossover"
+    | x :: xs -> if x = nt1 then nt2 :: xs
+                 else x :: (replace_element xs nt1 nt2)
+
+let rec get_production_rules_for_crossover g =
+    let r1 = random_element g in
+    let r2 = random_element g in
+    match r1, r2 with
+    | ProdRule(a, _), ProdRule(c, _) -> 
+        if a = "SAE_PACKET" || c = "SAE_PACKET" then get_production_rules_for_crossover g
+        else r1, r2
+    | _, _ -> get_production_rules_for_crossover g
+
+let rec replace_Rhs production_options rhs1 crossoverRhs = 
+    match production_options with
+    | [] -> []
+    | x :: xs -> if x = rhs1 then crossoverRhs :: xs
+                    else x :: (replace_Rhs xs rhs1 crossoverRhs)
+
+let rec replace_geList b rhs1 rhs2 crossoverPRs =
+    match b with
+    | [] -> []
+    | x :: xss -> 
+        if x = rhs1 
+        then (replace_Rhs b rhs1 (fst crossoverPRs)) @ (replace_geList xss rhs1 rhs2 crossoverPRs)
+        else if x = rhs2
+        then (replace_Rhs b rhs2 (snd crossoverPRs)) @ (replace_geList xss rhs1 rhs2 crossoverPRs)
+        else x :: (replace_geList xss rhs1 rhs2 crossoverPRs)
+
+let rec grammarUpdateAfterCrossover (nt : string) (g : ast) (rhs1 : prod_rule_rhs) (rhs2 : prod_rule_rhs) (crossoverPRs : (prod_rule_rhs * prod_rule_rhs)) : ast = 
+    match g with
+    | [] -> []
+    | ProdRule(a, b) :: xs -> 
+    if a = nt then  
+        let newPR = replace_geList b rhs1 rhs2 crossoverPRs in
+        ProdRule(a, newPR) :: (grammarUpdateAfterCrossover nt xs rhs1 rhs2 crossoverPRs)
+    else ProdRule(a, b) :: (grammarUpdateAfterCrossover nt xs rhs1 rhs2 crossoverPRs)
+    | TypeAnnotation(x,y,z) :: xs -> TypeAnnotation(x,y,z) :: (grammarUpdateAfterCrossover nt xs rhs1 rhs2 crossoverPRs)
+
+let extract_nt_po pr1 pr2 =
+match pr1, pr2 with
+| ProdRule(a, b), ProdRule(c, d) -> a, c, b, d
+| _, _ -> failwith "bad random for crossover"
+
+let log_grammar msg =
+let oc = open_out_gen [Open_append; Open_creat] 0o666 "../../failed_grammar.grammar" in
+pp_print_ast (Format.formatter_of_out_channel oc) msg;
+close_out oc;
+()
+
+let mutation_crossover (rhs1 : prod_rule_rhs) (rhs2 : prod_rule_rhs) : (prod_rule_rhs * prod_rule_rhs) =
+    Random.self_init () ;
+    match rhs1, rhs2 with
+    | Rhs([],[]), Rhs([],[]) -> Rhs([],[]), Rhs([],[])
+    | Rhs(geList1, scList1), Rhs (geList2, scList2) -> 
+        let randomGe1 = random_element geList1 in
+        let randomGe2 = random_element geList2 in
+        let crossoverList1 = replace_element geList1 randomGe1 randomGe2 in
+        let crossoverList2 = replace_element geList2 randomGe2 randomGe1 in (
+            match randomGe1, randomGe2 with
+            | (Nonterminal a), (Nonterminal b) -> 
+                (Rhs(crossoverList1, (remove_constraints a scList1)), Rhs(crossoverList2, (remove_constraints b scList2)))
+            | (Nonterminal _, (NamedNonterminal (_, _)|StubbedNonterminal (_, _))) -> failwith "unexpected crossover"
+            | ((NamedNonterminal (_, _)|StubbedNonterminal (_, _)), _) -> failwith "unexpected crossover"
+        )
+    | (Rhs (_, _), StubbedRhs _) -> failwith "unexpected crossover"
+    | (StubbedRhs _, _) -> failwith "unexpected crossover"

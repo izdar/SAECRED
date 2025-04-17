@@ -1,0 +1,10 @@
+(library
+ (name sbf)
+ (libraries unix menhirLib str cmdliner ocamlgraph bitstring yojson lwt lwt.unix)
+ (preprocess (pps ppx_bitstring lwt_ppx))
+ )
+
+(menhir
+ (modules parser sygusParser))
+
+(ocamllex lexer sygusLexer)

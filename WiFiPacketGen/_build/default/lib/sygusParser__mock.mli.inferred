@@ -1,0 +1,36 @@
+type token =
+    UNIT
+  | UNDERSCORE
+  | TRUE
+  | TOP
+  | STR
+  | SEQ
+  | RPAREN
+  | PLUSPLUS
+  | LPAREN
+  | INTEGER of int
+  | INT
+  | ID of string
+  | HYPHEN
+  | FUN
+  | FALSE
+  | EOF
+  | EMPTY
+  | DOT
+  | DEFINE
+  | CAPSEQ
+  | BOOL
+  | BITVEC
+  | BITS of bool list
+  | AS
+val menhir_begin_marker : int
+val xv_top_type : unit
+val xv_sygus_term : SygusAst.sygus_ast
+val xv_s : SygusAst.sygus_ast
+val xv_nonempty_list_bit_list_ : bool list list
+val xv_list_lisp_term_ : SygusAst.sygus_ast list
+val xv_lisp_term : SygusAst.sygus_ast
+val xv_il_ty : unit
+val xv_bool : bool
+val xv_bit_list : bool list
+val menhir_end_marker : int

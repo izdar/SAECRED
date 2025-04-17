@@ -1,0 +1,499 @@
+
+type token = 
+  | UNIT
+  | UNDERSCORE
+  | TRUE
+  | TOP
+  | STR
+  | SEQ
+  | RPAREN
+  | PLUSPLUS
+  | LPAREN
+  | INTEGER of (
+# 28 "lib/sygusParser.mly"
+      (int)
+# 16 "lib/sygusParser__mock.ml.mock"
+)
+  | INT
+  | ID of (
+# 27 "lib/sygusParser.mly"
+      (string)
+# 22 "lib/sygusParser__mock.ml.mock"
+)
+  | HYPHEN
+  | FUN
+  | FALSE
+  | EOF
+  | EMPTY
+  | DOT
+  | DEFINE
+  | CAPSEQ
+  | BOOL
+  | BITVEC
+  | BITS of (
+# 26 "lib/sygusParser.mly"
+      (bool list)
+# 37 "lib/sygusParser__mock.ml.mock"
+)
+  | AS
+
+# 1 "lib/sygusParser.mly"
+  
+open SygusAst
+
+# 45 "lib/sygusParser__mock.ml.mock"
+
+let menhir_begin_marker =
+  0
+
+and (xv_top_type, xv_sygus_term, xv_s, xv_nonempty_list_bit_list_, xv_list_lisp_term_, xv_lisp_term, xv_il_ty, xv_bool, xv_bit_list) =
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 230 "<standard.mly>"
+         xs
+# 54 "lib/sygusParser__mock.ml.mock"
+   : 'tv_nonempty_list_bit_list_) (_startpos_xs_ : Lexing.position) (_endpos_xs_ : Lexing.position) (_startofs_xs_ : int) (_endofs_xs_ : int) (_loc_xs_ : Lexing.position * Lexing.position) (
+# 230 "<standard.mly>"
+  x
+# 58 "lib/sygusParser__mock.ml.mock"
+   : 'tv_bit_list) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_nonempty_list_bit_list_ ->
+    
+# 231 "<standard.mly>"
+    ( x :: xs )
+# 63 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 227 "<standard.mly>"
+  x
+# 68 "lib/sygusParser__mock.ml.mock"
+   : 'tv_bit_list) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_nonempty_list_bit_list_ ->
+    
+# 228 "<standard.mly>"
+    ( [ x ] )
+# 73 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 218 "<standard.mly>"
+         xs
+# 78 "lib/sygusParser__mock.ml.mock"
+   : 'tv_list_lisp_term_) (_startpos_xs_ : Lexing.position) (_endpos_xs_ : Lexing.position) (_startofs_xs_ : int) (_endofs_xs_ : int) (_loc_xs_ : Lexing.position * Lexing.position) (
+# 218 "<standard.mly>"
+  x
+# 82 "lib/sygusParser__mock.ml.mock"
+   : 'tv_lisp_term) (_startpos_x_ : Lexing.position) (_endpos_x_ : Lexing.position) (_startofs_x_ : int) (_endofs_x_ : int) (_loc_x_ : Lexing.position * Lexing.position) : 'tv_list_lisp_term_ ->
+    
+# 219 "<standard.mly>"
+    ( x :: xs )
+# 87 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) : 'tv_list_lisp_term_ ->
+    
+# 216 "<standard.mly>"
+    ( [] )
+# 93 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 44 "lib/sygusParser.mly"
+ _1
+# 98 "lib/sygusParser__mock.ml.mock"
+   : 'tv_il_ty) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_top_type ->
+    
+# 44 "lib/sygusParser.mly"
+         ()
+# 103 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 43 "lib/sygusParser.mly"
+ _1
+# 108 "lib/sygusParser__mock.ml.mock"
+   : (
+# 27 "lib/sygusParser.mly"
+      (string)
+# 112 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_top_type ->
+    
+# 43 "lib/sygusParser.mly"
+      ()
+# 117 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                                                                            _12
+# 122 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__12_ : Lexing.position) (_endpos__12_ : Lexing.position) (_startofs__12_ : int) (_endofs__12_ : int) (_loc__12_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                                                                    _11
+# 126 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__11_ : Lexing.position) (_endpos__11_ : Lexing.position) (_startofs__11_ : int) (_endofs__11_ : int) (_loc__11_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                                                      t
+# 130 "lib/sygusParser__mock.ml.mock"
+   : 'tv_lisp_term) (_startpos_t_ : Lexing.position) (_endpos_t_ : Lexing.position) (_startofs_t_ : int) (_endofs_t_ : int) (_loc_t_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                                           _9
+# 134 "lib/sygusParser__mock.ml.mock"
+   : 'tv_top_type) (_startpos__9_ : Lexing.position) (_endpos__9_ : Lexing.position) (_startofs__9_ : int) (_endofs__9_ : int) (_loc__9_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                                   _8
+# 138 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__8_ : Lexing.position) (_endpos__8_ : Lexing.position) (_startofs__8_ : int) (_endofs__8_ : int) (_loc__8_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                           _7
+# 142 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__7_ : Lexing.position) (_endpos__7_ : Lexing.position) (_startofs__7_ : int) (_endofs__7_ : int) (_loc__7_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                      _6
+# 146 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                                 _5
+# 150 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__5_ : Lexing.position) (_endpos__5_ : Lexing.position) (_startofs__5_ : int) (_endofs__5_ : int) (_loc__5_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                         _4
+# 154 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+                 _3
+# 158 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+         _2
+# 162 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 39 "lib/sygusParser.mly"
+ _1
+# 166 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_sygus_term ->
+    
+# 40 "lib/sygusParser.mly"
+  ( t )
+# 171 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 36 "lib/sygusParser.mly"
+                  _2
+# 176 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 36 "lib/sygusParser.mly"
+   d
+# 180 "lib/sygusParser__mock.ml.mock"
+   : 'tv_sygus_term) (_startpos_d_ : Lexing.position) (_endpos_d_ : Lexing.position) (_startofs_d_ : int) (_endofs_d_ : int) (_loc_d_ : Lexing.position * Lexing.position) : (
+# 32 "lib/sygusParser.mly"
+       (SygusAst.sygus_ast)
+# 184 "lib/sygusParser__mock.ml.mock"
+  ) ->
+    (
+# 36 "lib/sygusParser.mly"
+                       ( d )
+# 189 "lib/sygusParser__mock.ml.mock"
+     : 'tv_s) in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 61 "lib/sygusParser.mly"
+  i
+# 194 "lib/sygusParser__mock.ml.mock"
+   : (
+# 28 "lib/sygusParser.mly"
+      (int)
+# 198 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos_i_ : Lexing.position) (_endpos_i_ : Lexing.position) (_startofs_i_ : int) (_endofs_i_ : int) (_loc_i_ : Lexing.position * Lexing.position) : 'tv_lisp_term ->
+    
+# 62 "lib/sygusParser.mly"
+  ( IntLeaf i )
+# 203 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 59 "lib/sygusParser.mly"
+  bits
+# 208 "lib/sygusParser__mock.ml.mock"
+   : 'tv_bit_list) (_startpos_bits_ : Lexing.position) (_endpos_bits_ : Lexing.position) (_startofs_bits_ : int) (_endofs_bits_ : int) (_loc_bits_ : Lexing.position * Lexing.position) : 'tv_lisp_term ->
+    
+# 60 "lib/sygusParser.mly"
+  ( BLLeaf bits )
+# 213 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 57 "lib/sygusParser.mly"
+  id
+# 218 "lib/sygusParser__mock.ml.mock"
+   : (
+# 27 "lib/sygusParser.mly"
+      (string)
+# 222 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos_id_ : Lexing.position) (_endpos_id_ : Lexing.position) (_startofs_id_ : int) (_endofs_id_ : int) (_loc_id_ : Lexing.position * Lexing.position) : 'tv_lisp_term ->
+    
+# 58 "lib/sygusParser.mly"
+  ( VarLeaf id )
+# 227 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 55 "lib/sygusParser.mly"
+  bits
+# 232 "lib/sygusParser__mock.ml.mock"
+   : (
+# 26 "lib/sygusParser.mly"
+      (bool list)
+# 236 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos_bits_ : Lexing.position) (_endpos_bits_ : Lexing.position) (_startofs_bits_ : int) (_endofs_bits_ : int) (_loc_bits_ : Lexing.position * Lexing.position) : 'tv_lisp_term ->
+    
+# 56 "lib/sygusParser.mly"
+  ( BVLeaf (List.length bits, bits) )
+# 241 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 53 "lib/sygusParser.mly"
+                                        _4
+# 246 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 53 "lib/sygusParser.mly"
+                   ts
+# 250 "lib/sygusParser__mock.ml.mock"
+   : 'tv_list_lisp_term_) (_startpos_ts_ : Lexing.position) (_endpos_ts_ : Lexing.position) (_startofs_ts_ : int) (_endofs_ts_ : int) (_loc_ts_ : Lexing.position * Lexing.position) (
+# 53 "lib/sygusParser.mly"
+          id
+# 254 "lib/sygusParser__mock.ml.mock"
+   : (
+# 27 "lib/sygusParser.mly"
+      (string)
+# 258 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos_id_ : Lexing.position) (_endpos_id_ : Lexing.position) (_startofs_id_ : int) (_endofs_id_ : int) (_loc_id_ : Lexing.position * Lexing.position) (
+# 53 "lib/sygusParser.mly"
+ _1
+# 262 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_lisp_term ->
+    
+# 54 "lib/sygusParser.mly"
+  ( Node (id, ts) )
+# 267 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 50 "lib/sygusParser.mly"
+                                      _5
+# 272 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__5_ : Lexing.position) (_endpos__5_ : Lexing.position) (_startofs__5_ : int) (_endofs__5_ : int) (_loc__5_ : Lexing.position * Lexing.position) (
+# 50 "lib/sygusParser.mly"
+                             _4
+# 276 "lib/sygusParser__mock.ml.mock"
+   : (
+# 28 "lib/sygusParser.mly"
+      (int)
+# 280 "lib/sygusParser__mock.ml.mock"
+  )) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 50 "lib/sygusParser.mly"
+                     _3
+# 284 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 50 "lib/sygusParser.mly"
+         _2
+# 288 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 50 "lib/sygusParser.mly"
+ _1
+# 292 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_ty ->
+    
+# 50 "lib/sygusParser.mly"
+                                               ()
+# 297 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 49 "lib/sygusParser.mly"
+                       _4
+# 302 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 49 "lib/sygusParser.mly"
+                 _3
+# 306 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 49 "lib/sygusParser.mly"
+         _2
+# 310 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 49 "lib/sygusParser.mly"
+ _1
+# 314 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_ty ->
+    
+# 49 "lib/sygusParser.mly"
+                                ()
+# 319 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 48 "lib/sygusParser.mly"
+ _1
+# 324 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_ty ->
+    
+# 48 "lib/sygusParser.mly"
+        ()
+# 329 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 47 "lib/sygusParser.mly"
+ _1
+# 334 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_il_ty ->
+    
+# 47 "lib/sygusParser.mly"
+       ()
+# 339 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 77 "lib/sygusParser.mly"
+ _1
+# 344 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bool ->
+    
+# 77 "lib/sygusParser.mly"
+        ( false )
+# 349 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 76 "lib/sygusParser.mly"
+ _1
+# 354 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bool ->
+    
+# 76 "lib/sygusParser.mly"
+       ( true )
+# 359 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+                                                            _6
+# 364 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+                              bls
+# 368 "lib/sygusParser__mock.ml.mock"
+   : 'tv_nonempty_list_bit_list_) (_startpos_bls_ : Lexing.position) (_endpos_bls_ : Lexing.position) (_startofs_bls_ : int) (_endofs_bls_ : int) (_loc_bls_ : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+                   _4
+# 372 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+              _3
+# 376 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+         _2
+# 380 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 71 "lib/sygusParser.mly"
+ _1
+# 384 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bit_list ->
+    
+# 72 "lib/sygusParser.mly"
+( List.flatten bls )
+# 389 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+                                                            _6
+# 394 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+                              bls
+# 398 "lib/sygusParser__mock.ml.mock"
+   : 'tv_nonempty_list_bit_list_) (_startpos_bls_ : Lexing.position) (_endpos_bls_ : Lexing.position) (_startofs_bls_ : int) (_endofs_bls_ : int) (_loc_bls_ : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+                   _4
+# 402 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+              _3
+# 406 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+         _2
+# 410 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 69 "lib/sygusParser.mly"
+ _1
+# 414 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bit_list ->
+    
+# 70 "lib/sygusParser.mly"
+  ( List.flatten bls )
+# 419 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+                                   _6
+# 424 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+                          b
+# 428 "lib/sygusParser__mock.ml.mock"
+   : 'tv_bool) (_startpos_b_ : Lexing.position) (_endpos_b_ : Lexing.position) (_startofs_b_ : int) (_endofs_b_ : int) (_loc_b_ : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+                   _4
+# 432 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+              _3
+# 436 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+         _2
+# 440 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 67 "lib/sygusParser.mly"
+ _1
+# 444 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bit_list ->
+    
+# 68 "lib/sygusParser.mly"
+  ( [b] )
+# 449 "lib/sygusParser__mock.ml.mock"
+     in
+  let _ = fun (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                                                            _10
+# 454 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__10_ : Lexing.position) (_endpos__10_ : Lexing.position) (_startofs__10_ : int) (_endofs__10_ : int) (_loc__10_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                                                    _9
+# 458 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__9_ : Lexing.position) (_endpos__9_ : Lexing.position) (_startofs__9_ : int) (_endofs__9_ : int) (_loc__9_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                                              _8
+# 462 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__8_ : Lexing.position) (_endpos__8_ : Lexing.position) (_startofs__8_ : int) (_endofs__8_ : int) (_loc__8_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                                      _7
+# 466 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__7_ : Lexing.position) (_endpos__7_ : Lexing.position) (_startofs__7_ : int) (_endofs__7_ : int) (_loc__7_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                              _6
+# 470 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__6_ : Lexing.position) (_endpos__6_ : Lexing.position) (_startofs__6_ : int) (_endofs__6_ : int) (_loc__6_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                       _5
+# 474 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__5_ : Lexing.position) (_endpos__5_ : Lexing.position) (_startofs__5_ : int) (_endofs__5_ : int) (_loc__5_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+                  _4
+# 478 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__4_ : Lexing.position) (_endpos__4_ : Lexing.position) (_startofs__4_ : int) (_endofs__4_ : int) (_loc__4_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+             _3
+# 482 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__3_ : Lexing.position) (_endpos__3_ : Lexing.position) (_startofs__3_ : int) (_endofs__3_ : int) (_loc__3_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+         _2
+# 486 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__2_ : Lexing.position) (_endpos__2_ : Lexing.position) (_startofs__2_ : int) (_endofs__2_ : int) (_loc__2_ : Lexing.position * Lexing.position) (
+# 65 "lib/sygusParser.mly"
+ _1
+# 490 "lib/sygusParser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) : 'tv_bit_list ->
+    
+# 66 "lib/sygusParser.mly"
+  ( [] )
+# 495 "lib/sygusParser__mock.ml.mock"
+     in
+  ((let rec diverge() = diverge() in diverge()) : 'tv_top_type * 'tv_sygus_term * 'tv_s * 'tv_nonempty_list_bit_list_ * 'tv_list_lisp_term_ * 'tv_lisp_term * 'tv_il_ty * 'tv_bool * 'tv_bit_list)
+
+and menhir_end_marker =
+  0

@@ -1,0 +1,72 @@
+type token =
+    TYPEANNOT
+  | TRUE
+  | TIMES
+  | STRING of string
+  | STR
+  | SEMICOLON
+  | RPAREN
+  | RCURLY
+  | PRODUCTION
+  | PLUS
+  | OPTION
+  | OF
+  | MINUS
+  | MACHINEINT
+  | LXOR
+  | LTE
+  | LT
+  | LPAREN
+  | LOR
+  | LNOT
+  | LIMPLIES
+  | LENGTH
+  | LCURLY
+  | LAND
+  | INTTOBITVECTOR
+  | INTEGER of int
+  | INT
+  | ID of string
+  | GTE
+  | GT
+  | FALSE
+  | EQ
+  | EOF
+  | DOT
+  | DIV
+  | COMMA
+  | CASE
+  | BVXOR
+  | BVOR
+  | BVNOT
+  | BVLTE
+  | BVLT
+  | BVGTE
+  | BVGT
+  | BVAND
+  | BOOL
+  | BITVECTOR
+  | BITS of bool list
+  | BITLIST
+  | ASSIGN
+  | ARROW
+val menhir_begin_marker : int
+val xv_separated_nonempty_list_OPTION_rhs_ : Ast.prod_rule_rhs list
+val xv_semantic_constraints : Ast.semantic_constraint list
+val xv_semantic_constraint_list : Ast.semantic_constraint list
+val xv_semantic_constraint : Ast.semantic_constraint
+val xv_s : Ast.ast
+val xv_rhs : Ast.prod_rule_rhs
+val xv_option_semantic_constraints_ : Ast.semantic_constraint list option
+val xv_option_index_ : int option
+val xv_nt_expr : Ast.nt_expr
+val xv_nonterminal : string
+val xv_nonempty_list_grammar_element_ : Ast.grammar_element list
+val xv_list_element_ : Ast.ast
+val xv_index : int
+val xv_il_type : Ast.il_type
+val xv_grammar_element : Ast.grammar_element
+val xv_expr : Ast.expr
+val xv_element : Ast.element
+val xv_case_list : Ast.case list
+val menhir_end_marker : int
